@@ -1,6 +1,8 @@
-# SummitRankAngular
+# WebProjectKBTU
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.22.
+KBTU Web-Dev Group Project
+
+This frontend app is built with Angular CLI 20.3.22.
 
 ## Development server
 
