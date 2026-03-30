@@ -1,0 +1,221 @@
+﻿<div class="bg-background font-body text-on-background antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl shadow-[0_12px_40px_rgba(22,40,57,0.06)] flex items-center justify-between px-6 h-20 w-full">
+<a class="flex items-center gap-3" routerLink="/landing">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-50 text-2xl" data-icon="filter_hdr">filter_hdr</span>
+<h1 class="font-['Space_Grotesk'] font-bold tracking-tighter text-2xl text-slate-900 dark:text-slate-100">MOUNT UP</h1>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity" routerLink="/landing">Home</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold text-orange-700 dark:text-orange-500 hover:opacity-80 transition-opacity" routerLink="/catalog">Guide</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity" routerLink="/leaderboard">Leaderboard</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity" routerLink="/about">About Us</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="px-4 py-2 rounded-lg border border-primary/20 text-primary font-headline font-bold text-sm tracking-tight hover:bg-primary/5 active:scale-95 transition-transform" routerLink="/login">Log In</a>
+<a class="px-4 py-2 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm tracking-tight hover:brightness-110 active:scale-95 transition-transform" routerLink="/register">Register</a>
+</div>
+</header>
+<main class="pt-32 pb-32 px-6 max-w-6xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="relative overflow-hidden rounded-xl alpine-gradient p-12 flex flex-col md:flex-row items-center gap-12">
+<div class="relative z-10 w-full md:w-1/2">
+<h2 class="font-headline text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tighter uppercase">Global<br/>Peak Mastery</h2>
+<p class="text-on-primary-container text-lg font-body max-w-md leading-relaxed">The definitive leaderboard of the world's most elite technical climbers. Precision, endurance, and the pursuit of the absolute summit.</p>
+</div>
+<div class="w-full md:w-1/2 flex justify-end relative">
+<div class="w-64 h-80 rounded-xl overflow-hidden shadow-2xl rotate-3 translate-x-4 border-4 border-white/10">
+<img class="w-full h-full object-cover" data-alt="professional climber scaling a vertical limestone wall during sunset with technical gear and sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsycqP0w_lTfIgrr32wI0_i9ear7CNj_sHazX6GOKQ33_Ggc9IPZQjneExo9hhk59hTHcOJoCaA24wvvYE5nDUvr2IZuK_phNlJuE0pWcxx1YHsxzoQe1wN1omaLJT4ksQ0USdQ9ucbFRmQwrFbnT4T39i2NWeDHv_ek6x5YY7xuezlE-MbuBpjHL2OufLrptg6xpT4ZdC9nH_ZHAc9AAIEbMTw17Urv0S6LhI_Db4gVkJy3_pyDnIu5ckYz5L-Hcf5XULtjCJQuZr"/>
+</div>
+<div class="absolute -bottom-6 -left-6 w-48 h-48 rounded-xl overflow-hidden shadow-2xl -rotate-6 border-4 border-white/10">
+<img class="w-full h-full object-cover" data-alt="jagged snow-capped mountain peak piercing through low lying clouds in the early morning blue hour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVbMENduSL4Y33fej7yJEhTOO6hnOjg3oxGC18VDQG5G5JKtOCaQQCgclpVa-40p3VbowPA_6I6q-m9wTuDB5rhr-HJtIKtpU1-uoM513B02ziA-3S-UtFDF3GjVipeXJoOntkkVh2UnFYhrMlr3_tJ1Li9HAzsCEjpP5-NTnLc4F9qi6UmnQ_yFoM9Sqwt0IPFkJHgrE1V6-kXAN8PS070KsFC1np8DPQXhYVMyX37bKD9Hdhd7lYnY-AEPQywned3bVvwQtpCp35"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Top 3 Podiums (Asymmetric Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
+<!-- Rank 2: Silver -->
+<div class="md:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between items-center text-center relative overflow-hidden group">
+<div class="absolute top-4 right-4 text-slate-400/20 font-headline text-8xl font-bold">02</div>
+<div class="relative z-10">
+<div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-slate-300 to-slate-100 mb-6 mx-auto">
+<img class="w-full h-full object-cover rounded-full border-2 border-white" data-alt="portrait of an experienced mountaineer with sun-kissed skin and rugged beard looking into the distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaCB_v_MVBcpy3b2TnezdlFcMGF6ZPIID3sG0dcM02bLRlhsJkFRiK2wqFoAf0lhyFx0pdxPDoODYdnDiOir9ni48l_o-VFbHTcM3wkTj9E_0RtLCA0iyUHEStvvRf50uKiRSGN_n4YJfdR7lSJToYk22_lCopsrXJSbmvqqhWg4-mCnD5RWYN-tk4F11Zv3APtlm0_yXEKGU8nhycnBAJ3zDrWN5JhsLca-6nAwtakBRx8BKYMN4QQCLRHlItauwbSi6kdPNfoPXP"/>
+</div>
+<div class="bg-slate-200 text-slate-800 text-[10px] font-label font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3 inline-block">Summit Seeker</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-1">Erik Jönsson</h3>
+<p class="font-label text-sm text-on-surface-variant mb-6">Sweden</p>
+</div>
+<div class="w-full flex justify-around border-t border-outline-variant/15 pt-6 relative z-10">
+<div>
+<p class="text-[10px] font-label uppercase text-on-surface-variant mb-1">Peaks</p>
+<p class="font-headline text-xl font-bold text-primary">142</p>
+</div>
+<div>
+<p class="text-[10px] font-label uppercase text-on-surface-variant mb-1">XP</p>
+<p class="font-headline text-xl font-bold text-primary">89.4k</p>
+</div>
+</div>
+</div>
+<!-- Rank 1: Gold -->
+<div class="md:col-span-4 bg-primary p-10 rounded-xl flex flex-col justify-between items-center text-center relative overflow-hidden shadow-2xl md:-mt-6">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="absolute top-4 right-4 text-secondary/20 font-headline text-8xl font-bold">01</div>
+<div class="relative z-10">
+<div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-secondary to-yellow-400 mb-6 mx-auto">
+<img class="w-full h-full object-cover rounded-full border-4 border-primary" data-alt="professional female athlete climber in high-altitude gear with a focused gaze and determined expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8KYlWSvij45vQLkEAw81wcmY5He0zgImgOINsAtURQo7QNXE99Zl_lPGeAt0-owQa28T32_qjN1xjsixOYfk0XAXsz5IUY_viD26DyQkSWnyKcVaRxIdDiZ-gjj82mt5nCX4fJGa-xK3PHfI8EZDXpsQSRaiXrk1Bq1wYtsQRIDetRo7aUMPpJ3QNWl0UmDP11FV9LDGDFatP83S2kC508Vp_4C4GuyynsvE93Rai8HwNvMue-IFujktJ6q1Ff78W9kwuvmgcgND_"/>
+</div>
+<div class="bg-secondary text-white text-[10px] font-label font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 inline-block">Alpine Master</div>
+<h3 class="font-headline text-3xl font-bold text-white mb-1">Elena Moretti</h3>
+<p class="font-label text-sm text-on-primary-container mb-8">Italy</p>
+</div>
+<div class="w-full flex justify-around border-t border-white/10 pt-8 relative z-10">
+<div>
+<p class="text-[10px] font-label uppercase text-on-primary-container mb-1">Peaks</p>
+<p class="font-headline text-2xl font-bold text-secondary">189</p>
+</div>
+<div>
+<p class="text-[10px] font-label uppercase text-on-primary-container mb-1">XP</p>
+<p class="font-headline text-2xl font-bold text-secondary">124.8k</p>
+</div>
+</div>
+</div>
+<!-- Rank 3: Bronze -->
+<div class="md:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between items-center text-center relative overflow-hidden group">
+<div class="absolute top-4 right-4 text-orange-900/10 font-headline text-8xl font-bold">03</div>
+<div class="relative z-10">
+<div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-orange-800/40 to-orange-400/40 mb-6 mx-auto">
+<img class="w-full h-full object-cover rounded-full border-2 border-white" data-alt="young man with climbing chalk on his hands and focused expression wearing technical outdoor apparel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi0yJFvE9CO4-j6BTXaB69jWp9ZQ-D4q4EfOpPM5dqOV5o_rQdlnw-azQCNxIc3vH61p-D-St1FTDNFU9wW1QMteUP0Q8b14oKzbkBHySK6BrN5TUswuYuF8vP-XMXSYxvYTX1ITPmWiwnCDJ5gRrX4fPAPW5BFZ09qFELCHTnS-dhQOkctkPtKIn-WJ3G5ZzFFOeVf3h9K-JrHhNj3RceqbITs4gORvNswXJJrIhQC47BcGDLa7g49EbpglPHGTEthDrWgMJ3pSV_"/>
+</div>
+<div class="bg-surface-container-high text-on-surface-variant text-[10px] font-label font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3 inline-block">Summit Seeker</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-1">Marcus Thorne</h3>
+<p class="font-label text-sm text-on-surface-variant mb-6">Canada</p>
+</div>
+<div class="w-full flex justify-around border-t border-outline-variant/15 pt-6 relative z-10">
+<div>
+<p class="text-[10px] font-label uppercase text-on-surface-variant mb-1">Peaks</p>
+<p class="font-headline text-xl font-bold text-primary">121</p>
+</div>
+<div>
+<p class="text-[10px] font-label uppercase text-on-surface-variant mb-1">XP</p>
+<p class="font-headline text-xl font-bold text-primary">76.2k</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Remaining Leaders Table -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)] overflow-x-auto">
+<h4 class="font-headline text-xl font-bold text-primary mb-8 uppercase tracking-widest">Global Ranking / 04 — 10</h4>
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-surface-container text-[10px] font-label uppercase tracking-widest text-on-surface-variant">
+<th class="pb-4 font-semibold">Rank</th>
+<th class="pb-4 font-semibold">Climber</th>
+<th class="pb-4 font-semibold hidden md:table-cell">Status</th>
+<th class="pb-4 font-semibold text-right">Peaks</th>
+<th class="pb-4 font-semibold text-right">Total XP</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Rank 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-headline font-bold text-primary">04</td>
+<td class="py-5">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="profile photo of a smiling man with technical glasses and high-altitude hiking gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0fPtlzycka-p57Fwm7fiDz9AYSF4XuKPs0DBeh5r3mESEYJBA6-TolPO5Wr1wlzv4HyD9j5j6HdyfD-IX-rj4yNPY9XWNH5UYkYPgQI4Z_zmI6GoJDm8S2VJOs3Epxfo_VlgYf6YlI4hcD169C6XBn8gUVsXz7kxZpYEQdD47geHMbrAz5564pARTORJN1jOZMzI8C2cUTcpJe3_iiX-c2_zGpkq5-QxT0tswdtmefTKah_CqHjr8OIAZ5y4c7uK9esW9IHsbZHAY"/>
+<div>
+<p class="font-bold text-primary">Yuki Tanaka</p>
+<p class="text-xs text-on-surface-variant">Japan</p>
+</div>
+</div>
+</td>
+<td class="py-5 hidden md:table-cell">
+<span class="bg-surface-container-high text-on-surface-variant text-[9px] font-label font-bold tracking-widest uppercase px-2 py-0.5 rounded">Summit Seeker</span>
+</td>
+<td class="py-5 text-right font-headline font-bold text-primary">98</td>
+<td class="py-5 text-right">
+<span class="bg-primary/5 text-primary px-3 py-1 rounded font-bold font-headline text-sm">62,400</span>
+</td>
+</tr>
+<!-- Rank 5 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-headline font-bold text-primary">05</td>
+<td class="py-5">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of a confident woman in outdoor gear with windswept hair and a background of soft focus peaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-2kF23Zq9W22yR3tH6E2Ujgs-rIqiNzlQ6mSV44WFxwDUG0SDjoPY2x9hs9IAJymhVWWQlfQ86awPY4AFaouhbWdUdcBHTqq1GJ94eglxJ74qwfjA-nRWodQhR-G_LLx2bw5SIOTMrbg2OwdqUKnuWgVLlv0sPphOxZ8gWoYxsrNhBpt19OTZL-FmBU3KMIgrY1K381FnA38y_Z1D1VBfbWFvIo5bTUGXJRTEq3rZLXyNN29xMfR-YJw3C-5uD_jLOwZoI5MbEACx"/>
+<div>
+<p class="font-bold text-primary">Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">USA</p>
+</div>
+</div>
+</td>
+<td class="py-5 hidden md:table-cell">
+<span class="bg-surface-container-high text-on-surface-variant text-[9px] font-label font-bold tracking-widest uppercase px-2 py-0.5 rounded">Summit Seeker</span>
+</td>
+<td class="py-5 text-right font-headline font-bold text-primary">85</td>
+<td class="py-5 text-right">
+<span class="bg-primary/5 text-primary px-3 py-1 rounded font-bold font-headline text-sm">54,120</span>
+</td>
+</tr>
+<!-- Rank 6 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-headline font-bold text-primary">06</td>
+<td class="py-5">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of a man with serious expression wearing a mountaineering harness and helmet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP4rJ1nL-uWX2wCYkH8kj6eP_bTiq8bZ0MTLGWCuydIOfEiZ0tK-3jOOTPyltWaNbGGHs4svcLUN91qUY56eSAhPff2sIz2KA8jUgu3qGmSG0fDAiMXquX1-MaN81WPslxIE_BtC7rRLJBHnv_ScdHZQRBOznMEsqFRue9CObO08pcTx467hXdb7YxInVkvgtCW7ooRhV38r7O8E6T7qR8S3P5GRPO2Ul4Jmv5HOa9V8H46mLv9wA9YEMnyWSsYeAH9SvdbAdPsTyj"/>
+<div>
+<p class="font-bold text-primary">Lars Vogt</p>
+<p class="text-xs text-on-surface-variant">Germany</p>
+</div>
+</div>
+</td>
+<td class="py-5 hidden md:table-cell">
+<span class="bg-surface-container-high text-on-surface-variant text-[9px] font-label font-bold tracking-widest uppercase px-2 py-0.5 rounded">Path Finder</span>
+</td>
+<td class="py-5 text-right font-headline font-bold text-primary">74</td>
+<td class="py-5 text-right">
+<span class="bg-primary/5 text-primary px-3 py-1 rounded font-bold font-headline text-sm">49,850</span>
+</td>
+</tr>
+<!-- Rank 7 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-headline font-bold text-primary">07</td>
+<td class="py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-headline font-bold text-primary">AA</div>
+<div>
+<p class="font-bold text-primary">Alex Aronov</p>
+<p class="text-xs text-on-surface-variant">Russia</p>
+</div>
+</div>
+</td>
+<td class="py-5 hidden md:table-cell">
+<span class="bg-surface-container-high text-on-surface-variant text-[9px] font-label font-bold tracking-widest uppercase px-2 py-0.5 rounded">Path Finder</span>
+</td>
+<td class="py-5 text-right font-headline font-bold text-primary">69</td>
+<td class="py-5 text-right">
+<span class="bg-primary/5 text-primary px-3 py-1 rounded font-bold font-headline text-sm">41,200</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl z-50 rounded-t-lg border-t border-slate-200/15 dark:border-slate-700/15 shadow-[0_-8px_30px_rgba(22,40,57,0.04)]">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:text-slate-900 dark:hover:text-slate-100 active:scale-90 transition-all duration-200" routerLink="/catalog">
+<span class="material-symbols-outlined mb-1" data-icon="explore">explore</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold">Guide</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:text-slate-900 dark:hover:text-slate-100 active:scale-90 transition-all duration-200" routerLink="/leaderboard">
+<span class="material-symbols-outlined mb-1" data-icon="fitness_center">fitness_center</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold">Leaderboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-orange-700 dark:text-orange-500 bg-slate-100/50 dark:bg-slate-800/50 rounded-xl px-4 py-2 active:scale-90 transition-all duration-200" routerLink="/profile">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.05em] font-semibold">Profile</span>
+</a>
+</nav>
+</div>
+

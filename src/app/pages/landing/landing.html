@@ -1,0 +1,197 @@
+﻿<div class="bg-surface text-on-surface font-body selection:bg-secondary/30">
+<!-- TopAppBar -->
+<header class="bg-slate-50/85 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+<nav class="flex items-center justify-between px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="landscape">landscape</span>
+<span class="text-2xl font-bold tracking-tighter text-slate-900 font-headline uppercase">MOUNT UP</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-orange-600 font-bold transition-colors duration-300 font-label text-sm tracking-widest" routerLink="/landing">HOME</a>
+<a class="text-slate-600 font-medium hover:text-orange-600 transition-colors duration-300 font-label text-sm tracking-widest" routerLink="/leaderboard">LEADERBOARD</a>
+<a class="text-slate-600 font-medium hover:text-orange-600 transition-colors duration-300 font-label text-sm tracking-widest" routerLink="/catalog">GUIDES</a>
+<a class="text-slate-600 font-medium hover:text-orange-600 transition-colors duration-300 font-label text-sm tracking-widest" routerLink="/about">ABOUT US</a>
+</div>
+<div class="flex items-center gap-3">
+<a class="px-4 py-2.5 rounded-lg border border-primary/20 text-primary font-headline font-bold text-sm tracking-tight hover:bg-primary/5 active:scale-95 transition-transform" routerLink="/login">
+                LOG IN
+            </a>
+<a class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-headline font-bold text-sm tracking-tight active:scale-95 transition-transform" routerLink="/register">
+                REGISTER
+            </a>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Majestic snow-capped mountain peaks piercing through soft white clouds at sunrise with deep blue atmospheric shadows and sharp ridges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABWe--eRt1FmwyhpBOqz9VsomLByCKiaP7PPMhiLXgrhLPB2q4NVPgKnkgmwpdm_2FcF8onvEek_RnXI9noudacQ9uSyBiz4AY4vtz3STYzRghc0MGaX5FyTwnEn9WbuGcOh_SIs7fnZacUPSdW_Ka4YYl7qWKVIuVrpVV4dDGXmBEI4nRYvdNxf97OO8ZRPXzZR7gkPC-M4PWm1Lc3t0Gk5F6aGhYQZagI50TdhR1bIx5N4ljdfW8hwMg0D8lTdc1f9ugp5zPcsH9"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+<div class="max-w-2xl">
+<span class="inline-block bg-secondary text-on-secondary px-4 py-1 rounded-full text-xs font-bold tracking-widest font-label mb-6 uppercase">Mount Up v1.0</span>
+<h1 class="text-6xl md:text-8xl font-headline font-bold text-white leading-[0.9] tracking-tighter mb-8">Elevate Your <br/><span class="text-secondary">Ascent</span></h1>
+<p class="text-lg text-slate-200 font-body mb-10 leading-relaxed max-w-lg">
+                        The ultimate verification platform for high-altitude mountaineering. Track your peaks, rank against the elite, and prepare with technical precision.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-secondary text-on-secondary px-8 py-4 rounded-lg font-headline font-bold text-lg hover:brightness-110 transition-all shadow-xl inline-flex" routerLink="/catalog">
+                            START YOUR JOURNEY
+                        </a>
+<a class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-headline font-bold text-lg hover:bg-white/20 transition-all inline-flex" routerLink="/leaderboard">
+                            VIEW LEADERBOARD
+                        </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 bg-surface px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Feature 1 -->
+<div class="md:col-span-7 bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="p-12">
+<span class="text-secondary font-label font-bold tracking-widest text-xs uppercase mb-4 block">Catalogue</span>
+<h3 class="text-4xl font-headline font-bold text-primary mb-6">Explore 100+ Peaks</h3>
+<p class="text-on-surface-variant max-w-md mb-8">Access detailed topographic maps, weather patterns, and technical route descriptions for the world's most challenging summits.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all" routerLink="/catalog">
+                                BROWSE CATALOG <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="relative h-64 mt-4 px-12 overflow-hidden">
+<img class="w-full h-full object-cover rounded-t-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="Distant mountain range silhouette under a starry night sky with subtle purple and blue nebula clouds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzOTIUlq5_5-ebqWURv9X2Wso6AnpfrIfdF8mOjSGWP3yUWwMzuslWesiblzgsZuDSL_3PVkzts6gSpHcmuvp4spNdLQFPkkx3uwPTbLY-bMpflRXeI5uLoSR8kjeU-ORcKu7u4Te-Bl6IkTWD0dS0sLFA-5CaH8ea6UlmkcFXq7R31LQBeUQ0o2R1dxRfcVUKM-As7h1EKCDNNhDFoR2dtrvoFt4L4tTGq5UkPcP842aSALPowWEZIgicqNZ_SJjrgWIQTB9YISAW"/>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-5 flex flex-col gap-8">
+<div class="bg-primary text-white p-10 rounded-xl flex-1 relative overflow-hidden">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6" data-icon="inventory_2">inventory_2</span>
+<h3 class="text-2xl font-headline font-bold mb-4">Precision Prep Gear Lists</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Systematic gear checklists tailored to specific altitudes and environmental conditions. Never leave safety to chance.</p>
+</div>
+<div class="bg-white p-10 rounded-xl flex-1 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6" data-icon="leaderboard">leaderboard</span>
+<h3 class="text-2xl font-headline font-bold text-primary mb-4">Global Climber Rankings</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">The industry standard for mountaineering achievement. Verified summits only. Peer-reviewed success.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works - Step by Step -->
+<section class="py-32 bg-primary text-white overflow-hidden relative">
+<!-- Background Decoration -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-primary-container opacity-20 skew-x-12 translate-x-1/4"></div>
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="text-center mb-24">
+<h2 class="text-5xl font-headline font-bold tracking-tight mb-4 uppercase">Verification Protocol</h2>
+<div class="h-1 w-20 bg-secondary mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+<!-- Connector line hidden on mobile -->
+<div class="hidden md:block absolute top-12 left-0 w-full h-px bg-slate-700 z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-primary border-4 border-secondary rounded-full flex items-center justify-center mb-8 shadow-2xl">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="hiking">hiking</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Climb</h4>
+<p class="text-slate-400 text-sm">Reach the summit of any cataloged peak in our global database.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-primary border-4 border-slate-700 rounded-full flex items-center justify-center mb-8 shadow-2xl">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Capture</h4>
+<p class="text-slate-400 text-sm">Document your success with GPS-tagged photography and beacon data.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-primary border-4 border-slate-700 rounded-full flex items-center justify-center mb-8 shadow-2xl">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="verified">verified</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Confirm</h4>
+<p class="text-slate-400 text-sm">Our verification protocol audits your data against local weather and tracking.</p>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mb-8 shadow-2xl">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="trending_up">trending_up</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Rank Up</h4>
+<p class="text-slate-400 text-sm">Earn your badge and climb the global rankings of elite explorers.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-24 bg-surface-container-low px-8">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 grid grid-cols-2 gap-4">
+<img class="rounded-xl w-full h-64 object-cover" data-alt="Professional mountain climber in high-tech orange gear scaling a vertical ice wall with technical ice axes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIYpJo8apmABzaVn23hzXSTepB7lL4dMvjtzERb6np-rXCjKNVh3h2AZAHMVwINOz4UlHP-QsplGPvgM9jnUkfs4IZ6uqHDe-zh0onKD6x4QFhESHphoWV3T-8QTmOBINMNB4tmUkLhy-GM789x9r9AdqpwxG1opDa1lAzK5Egetb2gSBPddhhYLyG6DVuvzUuZiyYC_7_x49vdLcI4feH-f7WgVjwmdW_xk3og1fOQzTRJcgMTMZzzqSfGHwYVOwQlQge01R7P7bL"/>
+<img class="rounded-xl w-full h-64 object-cover mt-8" data-alt="Group of diverse mountaineers standing on a summit plateau during a clear blue day with mountain ranges in distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl736NDmZJEDTePs7pcWwxI2Aoc3PlL3FVPquv6S-PLReEUONIjIxVhSr1IummX1QtXm1H_8O-OkOZn5aMSLWKMlVoZBZ75jtufomoFfJAxT7VEd6ITqJCc4BdMm7RBzAgrfEINcgFj0GYYtZaTIyd4P2odbEyYapDyYCl1Q0Xsmtu-YuraZRiHbZYWhwM7XY7uy30yD9YwC86q1NqUZUoDZLd84cycXbIpiZ8qGM0HsSk-sUdWH6PyKyQgHliG_Id73OJWMCwtzBy"/>
+</div>
+<div class="flex-1">
+<h2 class="text-4xl font-headline font-bold text-primary mb-8 leading-tight">Trusted by a community of 50,000+ elite climbers.</h2>
+<p class="text-on-surface-variant mb-10 text-lg">"The validation process on Mount Up is what sets it apart. It's not just about sharing photos; it's about authenticating the grit and precision required for these high-altitude achievements."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-slate-300">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close-up portrait of a woman in winter expedition gear with mountains reflected in her goggles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk8IPswMjiCvsmIgQud6551pvTFTxTrzMNu0eXuhOkMrtjNTAgOq6oEWKov1GSjmp_M8abtA66ZAiGLVuRdNn6vpKMtIhVVipXdUeuaZLWEw819eEsHECvNsIYCk2oZcKyKXe3At52sdpDO7YqHEzpJAom9r3_ggy0bqUYbnzkmuHXgUmco7tuLSVIJXRCnz10EdeQgfY2DQ7dhjqaofasYSUw9Uox9z11kGUPfm0L_Zyl2eV2wzoIHZc8Oe5Lijq0IhU1EJLWNsSs"/>
+</div>
+<div>
+<p class="font-bold text-primary font-headline">Elena Vos</p>
+<p class="text-xs text-on-surface-variant uppercase font-label tracking-widest">7-Summits Verified</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-8">
+<div class="max-w-7xl mx-auto bg-primary rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30" data-alt="Abstract mountain ridge peak with heavy snow texture and dramatic light and shadow contrasts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyHzi8lQbiT6AdcTUpBJY7RglJNmrgNsu-HpJ6B7q_MsvFNhbyi5w4qxurVWoPENKZwviyXVpN7PpdOb3lNWlsH2jCChWQCYsgTBSFd8dYsMkKxLoyIVbHZAvE05rGQ0Kj-_EKrhpvV2S_BA7-ChBSs9Dzud_DUbzeegEwAE3AI9FbXxlMKq4lU6UodFxg3BqgogBKG0l6MynhgdhobUwFZ7gnzUZkvlYKoOiOR2CEtRl3ZxKPyGv-fGejZoLA6su8FtZa977bpfI7"/>
+</div>
+<div class="relative z-10 py-20 px-12 text-center max-w-3xl mx-auto">
+<h2 class="text-5xl md:text-6xl font-headline font-bold text-white mb-8 tracking-tighter">Your Next Peak Awaits.</h2>
+<p class="text-slate-300 text-lg mb-12">Join the world's most sophisticated mountaineering network and start your path to legendary status.</p>
+<button class="bg-secondary text-on-secondary px-12 py-5 rounded-lg font-headline font-bold text-xl hover:scale-105 transition-transform shadow-2xl">
+                        START YOUR JOURNEY
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-900 dark:bg-black w-full py-16 px-8 mt-20 border-t border-slate-800">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto font-['Inter'] text-sm tracking-wide">
+<div>
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="landscape">landscape</span>
+<span class="font-['Space_Grotesk'] uppercase font-black text-white text-xl">MOUNT UP</span>
+</div>
+<p class="text-slate-400 max-w-sm mb-8">Precision engineered for high-altitude explorers. The global standard for ascent verification and mountaineering intelligence.</p>
+<p class="text-slate-500 text-xs">© 2026 MOUNT UP. ENGINEERED FOR HIGH ALTITUDE.</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<h5 class="text-white font-bold uppercase tracking-widest text-xs mb-2">Protocol</h5>
+<a class="text-slate-400 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" routerLink="/catalog">Mountain Catalog</a>
+<a class="text-slate-400 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Verification Protocol</a>
+<a class="text-slate-400 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" routerLink="/leaderboard">Climber Rankings</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-white font-bold uppercase tracking-widest text-xs mb-2">Resources</h5>
+<a class="text-slate-400 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" routerLink="/catalog">Preparation Guides</a>
+<a class="text-slate-400 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Ascent</a>
+<a class="text-slate-400 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Safety Alerts</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+

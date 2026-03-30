@@ -1,0 +1,107 @@
+<div class="bg-surface min-h-screen text-on-surface">
+  <header class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+    <nav class="flex items-center justify-between px-6 h-20 max-w-7xl mx-auto">
+      <a class="flex items-center gap-2" routerLink="/landing">
+        <span class="material-symbols-outlined text-primary text-3xl" data-icon="landscape">landscape</span>
+        <span class="text-2xl font-bold tracking-tighter text-slate-900 font-headline uppercase">MOUNT UP</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/landing">Home</a>
+        <a class="text-orange-700 font-semibold text-sm" routerLink="/catalog">Guide</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/leaderboard">Leaderboard</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/about">About Us</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a class="px-4 py-2 rounded-lg border border-primary/20 text-primary font-headline font-bold text-sm tracking-tight hover:bg-primary/5 transition-transform active:scale-95" routerLink="/login">Log In</a>
+        <a class="px-4 py-2 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm tracking-tight hover:brightness-110 transition-transform active:scale-95" routerLink="/register">Register</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-28 pb-16 px-6 max-w-7xl mx-auto">
+    @if (mountain) {
+      <section class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 mb-10">
+        <article class="rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+          <img [src]="mountain.cardImage.url" [alt]="mountain.cardImage.alt" class="w-full h-[420px] object-cover" />
+        </article>
+
+        <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+          <p class="text-xs uppercase tracking-[0.2em] font-label text-secondary mb-2">Mountain Wiki</p>
+          <h1 class="text-4xl font-headline font-bold text-primary mb-2">{{ mountain.name }}</h1>
+          <p class="text-sm text-on-surface-variant mb-5">{{ mountain.location }}</p>
+          <p class="text-sm leading-relaxed text-on-surface mb-6">{{ mountain.summary }}</p>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-2">
+              <span class="text-on-surface-variant">Height</span>
+              <span class="font-semibold text-primary">{{ mountain.elevationMeters }} m</span>
+            </div>
+            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-2">
+              <span class="text-on-surface-variant">Best season</span>
+              <span class="font-semibold text-primary">{{ mountain.bestSeason }}</span>
+            </div>
+            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-2">
+              <span class="text-on-surface-variant">Minimum rank</span>
+              <span class="font-semibold text-primary">{{ minimumRank.emoji }} {{ minimumRank.title }}</span>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <span class="text-on-surface-variant">Rank condition</span>
+              <span class="font-semibold text-primary text-right">{{ minimumRank.requirement }}</span>
+            </div>
+          </div>
+
+          <a class="inline-flex items-center gap-2 mt-6 text-primary font-semibold hover:opacity-80 transition-opacity" [href]="mountain.mapUrl" target="_blank" rel="noreferrer noopener">
+            Open map: {{ mountain.mapLabel }}
+          </a>
+        </article>
+      </section>
+
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+          <h2 class="text-2xl font-headline font-bold text-primary mb-4">How to climb</h2>
+          <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+            @for (step of mountain.climbPlan; track step) {
+              <li class="flex items-start gap-3">
+                <span class="text-secondary mt-1">•</span>
+                <span>{{ step }}</span>
+              </li>
+            }
+          </ul>
+        </article>
+
+        <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+          <h2 class="text-2xl font-headline font-bold text-primary mb-4">Required gear</h2>
+          <div class="flex flex-wrap gap-2">
+            @for (gear of mountain.requiredGear; track gear) {
+              <span class="px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold">{{ gear }}</span>
+            }
+          </div>
+
+          <div class="mt-6 rounded-xl bg-white p-4 border border-outline-variant/25">
+            <p class="text-xs uppercase tracking-[0.2em] font-label text-outline mb-2">Data source</p>
+            <p class="text-sm text-on-surface-variant">Frontend wiki page. Client or admin can replace all text/images with backend data later.</p>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-headline font-bold text-primary mb-4">Photos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          @for (image of mountain.gallery; track image.url) {
+            <article class="rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+              <img [src]="image.url" [alt]="image.alt" class="w-full h-72 object-cover" />
+            </article>
+          }
+        </div>
+      </section>
+    } @else {
+      <section class="rounded-2xl bg-surface-container-low p-10 text-center shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+        <h1 class="text-3xl font-headline font-bold text-primary mb-3">Mountain not found</h1>
+        <p class="text-on-surface-variant mb-6">This route does not exist yet. Choose one from the mountain catalog.</p>
+        <a class="px-5 py-2.5 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm tracking-tight inline-block" routerLink="/catalog">Back to catalog</a>
+      </section>
+    }
+  </main>
+</div>

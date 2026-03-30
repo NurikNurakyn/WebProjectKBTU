@@ -1,0 +1,75 @@
+<div class="bg-surface text-on-surface min-h-screen">
+  <header class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+    <nav class="flex items-center justify-between px-6 h-20 max-w-7xl mx-auto">
+      <a class="flex items-center gap-2" routerLink="/landing">
+        <span class="material-symbols-outlined text-primary text-3xl" data-icon="landscape">landscape</span>
+        <span class="text-2xl font-bold tracking-tighter text-slate-900 font-headline uppercase">MOUNT UP</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/landing">Home</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/catalog">Guide</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/leaderboard">Leaderboard</a>
+        <a class="text-orange-700 font-semibold text-sm" routerLink="/about">About Us</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a class="px-4 py-2 rounded-lg border border-primary/20 text-primary font-headline font-bold text-sm tracking-tight hover:bg-primary/5 transition-transform active:scale-95" routerLink="/login">Log In</a>
+        <a class="px-4 py-2 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm tracking-tight hover:brightness-110 transition-transform active:scale-95" routerLink="/register">Register</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-28 pb-16 px-6 max-w-7xl mx-auto space-y-12">
+    <section class="rounded-2xl bg-primary p-10 text-white">
+      <p class="text-xs uppercase tracking-[0.2em] font-label text-secondary mb-3">About Mount Up</p>
+      <h1 class="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">Community for verified mountain progress.</h1>
+      <p class="text-base md:text-lg text-on-primary-container max-w-3xl leading-relaxed">
+        Mount Up is a frontend platform where clients can store mountain cards, track climber progress, and manage rank progression.
+        Backend connection will be added later without redesigning the interface.
+      </p>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+        <h2 class="text-2xl font-headline font-bold text-primary mb-4">How It Works</h2>
+        <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+          <li>1. User creates account and receives rank Novice.</li>
+          <li>2. Client or admin confirms completed climbs in profile.</li>
+          <li>3. Rank increases automatically based on confirmed mountains.</li>
+          <li>4. Each mountain page shows required rank, route tips and photos.</li>
+        </ul>
+      </article>
+
+      <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+        <h2 class="text-2xl font-headline font-bold text-primary mb-4">Navigation</h2>
+        <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+          <li>Guide: short mountain cards and quick access to mountain wiki pages.</li>
+          <li>Leaderboard: public rating section.</li>
+          <li>Profile: rank, level and visited mountains (frontend placeholders).</li>
+          <li>Auth pages: login and registration UI ready for backend integration.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] font-label text-secondary mb-2">Rank System</p>
+          <h2 class="text-3xl font-headline font-bold text-primary">6 Climber Ranks</h2>
+        </div>
+        <a class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity" routerLink="/landing">Back to landing</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        @for (rank of ranks; track rank.id) {
+          <article class="rounded-xl border border-outline-variant/25 bg-white p-5">
+            <p class="text-xl font-headline font-bold text-primary">{{ rank.emoji }} {{ rank.id }}. {{ rank.title }}</p>
+            <p class="text-sm text-on-surface mt-2">{{ rank.requirement }}</p>
+            <p class="text-xs text-on-surface-variant mt-2">{{ rank.description }}</p>
+          </article>
+        }
+      </div>
+    </section>
+  </main>
+</div>
