@@ -1,0 +1,179 @@
+.profile-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #1e293b;
+  padding-bottom: 2rem;
+}
+
+.profile-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 3rem;
+}
+
+.profile-state {
+  margin-bottom: 1.5rem;
+  border: 1px solid #d7e1dc;
+  border-radius: 0.75rem;
+  background: #eef3f1;
+  padding: 0.85rem 1rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.profile-state--error {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.profile-rank-card,
+.profile-ascents-card {
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1.6rem;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+}
+
+.profile-rank-card__badge {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a36a1f;
+}
+
+.profile-rank-card__title {
+  margin: 0;
+  color: #31473a;
+  font-size: 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.profile-rank-card__subtitle {
+  margin: 0.45rem 0 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.profile-stats {
+  border-radius: 0.8rem;
+  border: 1px solid rgb(148 163 184 / 0.25);
+  background: #fff;
+  padding: 0.9rem;
+}
+
+.profile-stats__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.profile-stats__row + .profile-stats__row {
+  margin-top: 0.5rem;
+}
+
+.profile-stats__label {
+  color: #64748b;
+}
+
+.profile-stats__value {
+  color: #31473a;
+  font-weight: 600;
+}
+
+.profile-ascents-card__title {
+  margin: 0;
+  color: #31473a;
+  font-size: 1.6rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.profile-ascents-card__subtitle,
+.profile-ascents-card__loading,
+.profile-ascents-card__empty {
+  margin: 0.7rem 0 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.profile-ascents-list {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.profile-ascent-item {
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 0.8rem;
+  background: #fff;
+  padding: 0.9rem;
+}
+
+.profile-ascent-item__top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  justify-content: space-between;
+}
+
+.profile-ascent-item__mountain {
+  margin: 0;
+  color: #31473a;
+  font-size: 1.1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.profile-ascent-item__date {
+  margin: 0.15rem 0 0;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.profile-ascent-item__status-wrap {
+  text-align: left;
+}
+
+.profile-ascent-item__status {
+  margin: 0;
+  color: #31473a;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.profile-ascent-item__notes {
+  margin: 0.65rem 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .profile-ascent-item__top {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .profile-ascent-item__status-wrap {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}

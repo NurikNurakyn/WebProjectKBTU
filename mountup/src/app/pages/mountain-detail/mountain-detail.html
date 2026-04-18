@@ -1,0 +1,57 @@
+<div class="mountain-page">
+  <app-site-header activeNav="guides"></app-site-header>
+
+  <main class="mountain-main">
+    @if (isLoading) {
+      <section class="mountain-state">Loading mountain details...</section>
+    }
+
+    @if (errorMessage) {
+      <section class="mountain-state mountain-state--error">
+        {{ errorMessage }}
+      </section>
+    }
+
+    @if (mountain) {
+      <section class="mountain-layout">
+        <article class="mountain-image-panel">
+          @if (mountain.image_url) {
+            <img
+              [src]="mountain.image_url"
+              [alt]="mountain.name"
+              class="mountain-image-panel__image"
+            />
+          } @else {
+            <div class="mountain-image-panel__placeholder">No image URL in Django yet</div>
+          }
+        </article>
+
+        <article class="mountain-info-card">
+          <h1 class="mountain-info-card__title">{{ mountain.name }}</h1>
+          <p class="mountain-info-card__location">{{ mountain.location }}</p>
+
+          <div class="mountain-info-card__meta">
+            <div class="mountain-info-card__meta-row">
+              <span class="mountain-info-card__label">Height</span>
+              <span class="mountain-info-card__value">{{ mountain.elevation_m }} m</span>
+            </div>
+            <div class="mountain-info-card__meta-row">
+              <span class="mountain-info-card__label">Difficulty</span>
+              <span class="mountain-info-card__value">{{ mountain.difficulty }}</span>
+            </div>
+            <div class="mountain-info-card__meta-row">
+              <span class="mountain-info-card__label">Created by</span>
+              <span class="mountain-info-card__value">{{ mountain.created_by_username }}</span>
+            </div>
+          </div>
+
+          <p class="mountain-info-card__description">
+            {{ mountain.description || 'Description can be added from Django admin panel.' }}
+          </p>
+
+          <a class="mountain-info-card__back-link" routerLink="/catalog">Back to catalog</a>
+        </article>
+      </section>
+    }
+  </main>
+</div>

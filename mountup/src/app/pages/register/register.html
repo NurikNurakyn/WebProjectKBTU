@@ -1,0 +1,83 @@
+<div class="register-page">
+  <app-site-header></app-site-header>
+
+  <main class="register-main">
+    <section class="register-card">
+      <h1 class="register-title">Create Account</h1>
+      <p class="register-subtitle">Create your account to start using the platform.</p>
+
+      <form class="register-form" (ngSubmit)="onSubmit()">
+        <label class="register-field register-field--wide">
+          <span class="register-field__label">Full Name</span>
+          <input
+            class="register-field__input"
+            placeholder="Your name"
+            type="text"
+            name="fullName"
+            [(ngModel)]="fullName"
+          />
+        </label>
+
+        <label class="register-field register-field--wide">
+          <span class="register-field__label">Email</span>
+          <input
+            class="register-field__input"
+            placeholder="you@example.com"
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+          />
+        </label>
+
+        <label class="register-field register-field--wide">
+          <span class="register-field__label">Username</span>
+          <input
+            class="register-field__input"
+            placeholder="username"
+            type="text"
+            name="username"
+            [(ngModel)]="username"
+          />
+        </label>
+
+        <label class="register-field">
+          <span class="register-field__label">Password</span>
+          <input
+            class="register-field__input"
+            placeholder="Minimum 8 symbols"
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+          />
+        </label>
+
+        <label class="register-field">
+          <span class="register-field__label">Country</span>
+          <input
+            class="register-field__input"
+            placeholder="Kazakhstan"
+            type="text"
+            name="country"
+            [(ngModel)]="country"
+          />
+        </label>
+
+        <button class="register-submit" type="submit" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Registering...' : 'Register' }}
+        </button>
+
+        @if (successMessage) {
+          <p class="register-success">{{ successMessage }}</p>
+        }
+        @if (errorMessage) {
+          <p class="register-error">{{ errorMessage }}</p>
+        }
+      </form>
+
+      <p class="register-footer-note">
+        Already have an account?
+        <a class="register-footer-note__link" routerLink="/login">Log in</a>
+      </p>
+    </section>
+  </main>
+</div>

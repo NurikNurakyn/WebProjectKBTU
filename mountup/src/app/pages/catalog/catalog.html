@@ -1,0 +1,88 @@
+<div class="catalog-page">
+  <app-site-header activeNav="guides"></app-site-header>
+
+  <main class="catalog-main">
+    <section class="catalog-hero">
+      <div>
+        <span class="catalog-hero__badge">Mountain Guide</span>
+        <h2 class="catalog-hero__title">Choose a mountain.</h2>
+        <p class="catalog-hero__text">
+          Card shows only photo, name and quick action. Full information is on each mountain wiki
+          page.
+        </p>
+      </div>
+      <div class="catalog-hero__actions">
+        <button
+          class="catalog-hero__reload-btn"
+          type="button"
+          (click)="loadMountainsFromApi()"
+          [disabled]="isLoadingApiMountains"
+        >
+          {{ isLoadingApiMountains ? 'Loading...' : 'Reload from API' }}
+        </button>
+        <a class="catalog-hero__link" routerLink="/about">View rank system</a>
+      </div>
+    </section>
+
+    @if (apiErrorMessage) {
+      <section class="catalog-state catalog-state--error">
+        {{ apiErrorMessage }}
+      </section>
+    }
+
+    @if (isLoadingApiMountains) {
+      <section class="catalog-state">Loading mountains from Django...</section>
+    }
+
+    @if (apiMountains.length) {
+      <section class="catalog-grid">
+        @for (mountain of apiMountains; track mountain.id) {
+          <article class="catalog-card">
+            <div class="catalog-card__image-wrap">
+              @if (mountain.image_url) {
+                <img [src]="mountain.image_url" [alt]="mountain.name" class="catalog-card__image" />
+              } @else {
+                <div class="catalog-card__image-placeholder">No image URL in Django yet</div>
+              }
+            </div>
+
+            <div class="catalog-card__body">
+              <h3 class="catalog-card__title">{{ mountain.name }}</h3>
+              <p class="catalog-card__location">{{ mountain.location }}</p>
+              <p class="catalog-card__meta">
+                {{ mountain.elevation_m }} m • {{ mountain.difficulty }}
+              </p>
+
+              <a class="catalog-card__action" [routerLink]="['/mountains', mountain.id]">
+                Learn more
+                <span class="material-symbols-outlined" data-icon="arrow_forward"
+                  >arrow_forward</span
+                >
+              </a>
+            </div>
+          </article>
+        }
+      </section>
+    } @else if (!isLoadingApiMountains && !apiErrorMessage) {
+      <section class="catalog-state">
+        No mountains yet. Add mountain records in Django admin panel and they will appear here
+        automatically.
+      </section>
+    }
+  </main>
+
+  <nav class="catalog-mobile-nav">
+    <a class="catalog-mobile-nav__item catalog-mobile-nav__item--active" routerLink="/catalog">
+      <span class="material-symbols-outlined" data-icon="explore">explore</span>
+      <span class="catalog-mobile-nav__label">Guide</span>
+    </a>
+    <a class="catalog-mobile-nav__item" routerLink="/profile">
+      <span class="material-symbols-outlined" data-icon="person">person</span>
+      <span class="catalog-mobile-nav__label">Profile</span>
+    </a>
+    <a class="catalog-mobile-nav__item" routerLink="/about">
+      <span class="material-symbols-outlined" data-icon="info">info</span>
+      <span class="catalog-mobile-nav__label">About</span>
+    </a>
+  </nav>
+</div>

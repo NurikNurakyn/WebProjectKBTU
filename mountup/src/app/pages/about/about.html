@@ -1,0 +1,51 @@
+<div class="about-page">
+  <app-site-header activeNav="about"></app-site-header>
+
+  <main class="about-main">
+    <section class="about-hero">
+      <p class="about-hero__badge">About Mount Up</p>
+      <h1 class="about-hero__title">Community for verified mountain progress.</h1>
+      <p class="about-hero__text">
+        Mount Up is a frontend platform where clients can store mountain cards, track climber
+        progress, and manage rank progression. Backend connection will be added later without
+        redesigning the interface.
+      </p>
+    </section>
+
+    <section class="about-grid">
+      <article class="about-card">
+        <h2 class="about-card__title">How It Works</h2>
+        <ul class="about-card__list">
+          <li>1. User creates account and receives rank Novice.</li>
+          <li>2. Client or admin confirms completed climbs in profile.</li>
+          <li>3. Rank increases automatically based on confirmed mountains.</li>
+          <li>4. Each mountain page shows required rank, route tips and photos.</li>
+        </ul>
+      </article>
+
+      <article class="about-card">
+        <h2 class="about-card__title">Navigation</h2>
+        <ul class="about-card__list">
+          <li>Guide: short mountain cards and quick access to mountain wiki pages.</li>
+          <li>Profile: rank, level and visited mountains (frontend placeholders).</li>
+          <li>Auth pages: login and registration UI ready for backend integration.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="about-rank">
+      <div class="about-rank__header">
+        <div>
+          <p class="about-rank__badge">Rank System</p>
+          <h2 class="about-rank__title">Managed from Django Admin</h2>
+        </div>
+        <a class="about-rank__link" routerLink="/landing">Back to landing</a>
+      </div>
+
+      <p class="about-rank__text">
+        User level and rank are calculated from experience points in the backend profile. You can
+        manage points and ascent confirmations directly in Django admin panel.
+      </p>
+    </section>
+  </main>
+</div>

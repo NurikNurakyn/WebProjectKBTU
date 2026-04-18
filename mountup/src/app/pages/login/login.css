@@ -1,0 +1,109 @@
+.login-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.login-main {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 3rem;
+}
+
+.login-card {
+  border-radius: 1rem;
+  background: #f0f4f2;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+}
+
+.login-title {
+  margin: 0;
+  color: #31473a;
+  font-size: 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  margin: 0.5rem 0 1.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-field {
+  display: block;
+}
+
+.login-field__label {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.login-field__input {
+  margin-top: 0.5rem;
+  width: 100%;
+  border: 1px solid rgb(148 163 184 / 0.45);
+  border-radius: 0.65rem;
+  background: #fff;
+  padding: 0.64rem 0.8rem;
+  font: inherit;
+}
+
+.login-field__input:focus {
+  outline: 2px solid #8fa699;
+  outline-offset: 1px;
+}
+
+.login-submit {
+  margin-top: 0.35rem;
+  width: 100%;
+  border: 0;
+  border-radius: 0.65rem;
+  background: #31473a;
+  color: #fff;
+  padding: 0.7rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.login-submit:hover {
+  filter: brightness(1.08);
+}
+
+.login-submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.login-error {
+  margin: 0;
+  color: #dc2626;
+  font-size: 0.88rem;
+}
+
+.login-footer-note {
+  margin: 1.25rem 0 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.login-footer-note__link {
+  color: #31473a;
+  font-weight: 600;
+}
+
+.login-footer-note__link:hover {
+  opacity: 0.8;
+}

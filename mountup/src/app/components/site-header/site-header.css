@@ -1,0 +1,194 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  backdrop-filter: blur(14px);
+  background: rgb(248 250 252 / 0.85);
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+}
+
+.site-header__nav {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-header__brand-icon {
+  font-size: 1.9rem;
+  color: #31473a;
+}
+
+.site-header__brand-text {
+  color: #111827;
+  font-size: 1.45rem;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.site-header__links {
+  display: none;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.site-header__link {
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.16em;
+  transition: color 0.25s ease;
+}
+
+.site-header__link:hover,
+.site-header__link--active {
+  color: #ea580c;
+}
+
+.site-header__link--active {
+  font-weight: 700;
+}
+
+.site-header__actions {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.site-header__account-btn,
+.site-header__login-link,
+.site-header__register-link {
+  border-radius: 0.65rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.site-header__account-btn:active,
+.site-header__login-link:active,
+.site-header__register-link:active {
+  transform: scale(0.96);
+}
+
+.site-header__account-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgb(49 71 58 / 0.22);
+  color: #31473a;
+  background: transparent;
+  cursor: pointer;
+}
+
+.site-header__account-btn:hover,
+.site-header__login-link:hover {
+  background: rgb(49 71 58 / 0.08);
+}
+
+.site-header__account-icon {
+  font-size: 1.45rem;
+}
+
+.site-header__account-name {
+  font-size: 0.82rem;
+}
+
+.site-header__menu {
+  position: absolute;
+  right: 0;
+  top: 3rem;
+  width: 11rem;
+  border: 1px solid rgb(148 163 184 / 0.28);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 0.5rem;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.12);
+}
+
+.site-header__menu-link,
+.site-header__menu-logout {
+  display: block;
+  width: 100%;
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.site-header__menu-link {
+  color: #334155;
+}
+
+.site-header__menu-link:hover {
+  background: #f8fafc;
+}
+
+.site-header__menu-logout {
+  margin-top: 0.2rem;
+  border: 0;
+  background: transparent;
+  color: #dc2626;
+  text-align: left;
+  cursor: pointer;
+}
+
+.site-header__menu-logout:hover {
+  background: #fef2f2;
+}
+
+.site-header__login-link {
+  border: 1px solid rgb(49 71 58 / 0.22);
+  color: #31473a;
+  padding: 0.62rem 0.95rem;
+}
+
+.site-header__register-link {
+  background: #31473a;
+  color: #fff;
+  padding: 0.62rem 1.05rem;
+}
+
+@media (min-width: 768px) {
+  .site-header__links {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header__nav {
+    padding: 0.9rem 1rem;
+  }
+
+  .site-header__brand-text {
+    font-size: 1.15rem;
+  }
+
+  .site-header__actions {
+    gap: 0.4rem;
+  }
+
+  .site-header__login-link,
+  .site-header__register-link {
+    padding: 0.56rem 0.72rem;
+    font-size: 0.72rem;
+  }
+}

@@ -1,0 +1,151 @@
+﻿{
+  "info": {
+    "_postman_id": "4d5a102f-8145-4f59-9245-7d7fba2f36d9",
+    "name": "MountUp API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8000/api" },
+    { "key": "accessToken", "value": "" },
+    { "key": "refreshToken", "value": "" },
+    { "key": "mountainId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"climber01\",\n  \"email\": \"climber01@example.com\",\n  \"password\": \"StrongPass123\",\n  \"full_name\": \"Alex Climber\",\n  \"country\": \"Kazakhstan\"\n}" },
+        "url": { "raw": "{{baseUrl}}/register/", "host": ["{{baseUrl}}"], "path": ["register", ""] }
+      },
+      "response": [{ "name": "201 Register", "status": "Created", "code": 201, "body": "{\n  \"id\": 1,\n  \"username\": \"climber01\",\n  \"email\": \"climber01@example.com\"\n}" }]
+    },
+    {
+      "name": "Auth - Login (JWT)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"climber01\",\n  \"password\": \"StrongPass123\"\n}" },
+        "url": { "raw": "{{baseUrl}}/login/", "host": ["{{baseUrl}}"], "path": ["login", ""] }
+      },
+      "response": [{ "name": "200 Login", "status": "OK", "code": 200, "body": "{\n  \"access\": \"<jwt_access_token>\",\n  \"refresh\": \"<jwt_refresh_token>\",\n  \"user\": {\n    \"id\": 1,\n    \"username\": \"climber01\",\n    \"email\": \"climber01@example.com\"\n  }\n}" }]
+    },
+    {
+      "name": "Auth - Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"refresh\": \"{{refreshToken}}\"\n}" },
+        "url": { "raw": "{{baseUrl}}/logout/", "host": ["{{baseUrl}}"], "path": ["logout", ""] }
+      },
+      "response": [{ "name": "200 Logout", "status": "OK", "code": 200, "body": "{\n  \"message\": \"Logged out successfully.\"\n}" }]
+    },
+    {
+      "name": "Profile - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+        "url": { "raw": "{{baseUrl}}/profile/", "host": ["{{baseUrl}}"], "path": ["profile", ""] }
+      },
+      "response": [{ "name": "200 Profile", "status": "OK", "code": 200, "body": "{\n  \"username\": \"climber01\",\n  \"email\": \"climber01@example.com\",\n  \"country\": \"Kazakhstan\",\n  \"bio\": \"\",\n  \"experience_points\": 0,\n  \"level\": 1,\n  \"rank_title\": \"Novice\",\n  \"next_rank\": {\n    \"title\": \"Tourist\",\n    \"threshold\": 500,\n    \"points_left\": 500\n  },\n  \"ascents_count\": 0\n}" }]
+    },
+    {
+      "name": "Mountains - List",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/mountains/", "host": ["{{baseUrl}}"], "path": ["mountains", ""] }
+      },
+      "response": [{ "name": "200 Mountains List", "status": "OK", "code": 200, "body": "[{\n  \"id\": 1,\n  \"name\": \"Talgar Peak\",\n  \"location\": \"Trans-Ili Alatau\",\n  \"image_url\": \"https://example.com/photo.jpg\",\n  \"elevation_m\": 4979,\n  \"difficulty\": \"Advanced\",\n  \"description\": \"High-altitude challenge\",\n  \"is_featured\": false,\n  \"created_by\": 1,\n  \"created_by_username\": \"climber01\",\n  \"created_at\": \"2026-04-17T10:00:00Z\",\n  \"updated_at\": \"2026-04-17T10:00:00Z\"\n}]" }]
+    },
+    {
+      "name": "Mountains - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Talgar Peak\",\n  \"location\": \"Trans-Ili Alatau\",\n  \"image_url\": \"https://example.com/photo.jpg\",\n  \"elevation_m\": 4979,\n  \"difficulty\": \"Advanced\",\n  \"description\": \"High-altitude challenge\",\n  \"is_featured\": false\n}" },
+        "url": { "raw": "{{baseUrl}}/mountains/", "host": ["{{baseUrl}}"], "path": ["mountains", ""] }
+      },
+      "response": [{ "name": "201 Mountain Created", "status": "Created", "code": 201, "body": "{\n  \"id\": 2,\n  \"name\": \"Talgar Peak\"\n}" }]
+    },
+    {
+      "name": "Mountains - Detail",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/mountains/{{mountainId}}/", "host": ["{{baseUrl}}"], "path": ["mountains", "{{mountainId}}", ""] }
+      },
+      "response": [{ "name": "200 Mountain Detail", "status": "OK", "code": 200, "body": "{\n  \"id\": 1,\n  \"name\": \"Talgar Peak\",\n  \"location\": \"Trans-Ili Alatau\"\n}" }]
+    },
+    {
+      "name": "Mountains - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Talgar Peak Updated\",\n  \"location\": \"Trans-Ili Alatau\",\n  \"image_url\": \"https://example.com/updated.jpg\",\n  \"elevation_m\": 4979,\n  \"difficulty\": \"Advanced\",\n  \"description\": \"Updated description\",\n  \"is_featured\": true\n}" },
+        "url": { "raw": "{{baseUrl}}/mountains/{{mountainId}}/", "host": ["{{baseUrl}}"], "path": ["mountains", "{{mountainId}}", ""] }
+      },
+      "response": [{ "name": "200 Mountain Updated", "status": "OK", "code": 200, "body": "{\n  \"id\": 1,\n  \"name\": \"Talgar Peak Updated\"\n}" }]
+    },
+    {
+      "name": "Mountains - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+        "url": { "raw": "{{baseUrl}}/mountains/{{mountainId}}/", "host": ["{{baseUrl}}"], "path": ["mountains", "{{mountainId}}", ""] }
+      },
+      "response": [{ "name": "204 Mountain Deleted", "status": "No Content", "code": 204, "body": "" }]
+    },
+    {
+      "name": "Ascents - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+        "url": { "raw": "{{baseUrl}}/ascents/", "host": ["{{baseUrl}}"], "path": ["ascents", ""] }
+      },
+      "response": [{ "name": "200 Ascents", "status": "OK", "code": 200, "body": "[]" }]
+    },
+    {
+      "name": "Ascents - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"mountain\": {{mountainId}},\n  \"climbed_on\": \"2026-04-10\",\n  \"notes\": \"Windy but manageable\",\n  \"status\": \"confirmed\"\n}" },
+        "url": { "raw": "{{baseUrl}}/ascents/", "host": ["{{baseUrl}}"], "path": ["ascents", ""] }
+      },
+      "response": [{ "name": "201 Ascent Created", "status": "Created", "code": 201, "body": "{\n  \"id\": 1,\n  \"status\": \"confirmed\"\n}" }]
+    },
+    {
+      "name": "Comments - List",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/comments/?mountain={{mountainId}}", "host": ["{{baseUrl}}"], "path": ["comments", ""], "query": [{ "key": "mountain", "value": "{{mountainId}}" }] }
+      },
+      "response": [{ "name": "200 Comments", "status": "OK", "code": 200, "body": "[]" }]
+    },
+    {
+      "name": "Comments - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"mountain\": {{mountainId}},\n  \"body\": \"Great route for spring training!\"\n}" },
+        "url": { "raw": "{{baseUrl}}/comments/", "host": ["{{baseUrl}}"], "path": ["comments", ""] }
+      },
+      "response": [{ "name": "201 Comment Created", "status": "Created", "code": 201, "body": "{\n  \"id\": 1,\n  \"body\": \"Great route for spring training!\"\n}" }]
+    }
+  ]
+}

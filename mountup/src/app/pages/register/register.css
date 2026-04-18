@@ -1,0 +1,136 @@
+.register-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.register-main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 3rem;
+}
+
+.register-card {
+  border-radius: 1rem;
+  background: #f0f4f2;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+}
+
+.register-title {
+  margin: 0;
+  color: #31473a;
+  font-size: 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.register-subtitle {
+  margin: 0.5rem 0 1.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.register-form {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.register-field {
+  display: block;
+}
+
+.register-field--wide {
+  grid-column: span 1;
+}
+
+.register-field__label {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.register-field__input {
+  margin-top: 0.5rem;
+  width: 100%;
+  border: 1px solid rgb(148 163 184 / 0.45);
+  border-radius: 0.65rem;
+  background: #fff;
+  padding: 0.64rem 0.8rem;
+  font: inherit;
+}
+
+.register-field__input:focus {
+  outline: 2px solid #8fa699;
+  outline-offset: 1px;
+}
+
+.register-submit {
+  margin-top: 0.35rem;
+  grid-column: span 1;
+  border: 0;
+  border-radius: 0.65rem;
+  background: #31473a;
+  color: #fff;
+  padding: 0.7rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.register-submit:hover {
+  filter: brightness(1.08);
+}
+
+.register-submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.register-success,
+.register-error {
+  margin: 0;
+  grid-column: span 1;
+  font-size: 0.88rem;
+}
+
+.register-success {
+  color: #047857;
+}
+
+.register-error {
+  color: #dc2626;
+}
+
+.register-footer-note {
+  margin: 1.25rem 0 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.register-footer-note__link {
+  color: #31473a;
+  font-weight: 600;
+}
+
+.register-footer-note__link:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .register-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .register-field--wide,
+  .register-submit,
+  .register-success,
+  .register-error {
+    grid-column: span 2;
+  }
+}

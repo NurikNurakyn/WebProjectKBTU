@@ -1,0 +1,140 @@
+.mountain-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.mountain-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 3rem;
+}
+
+.mountain-state {
+  margin-bottom: 1.5rem;
+  border: 1px solid #d7e1dc;
+  border-radius: 0.75rem;
+  background: #eef3f1;
+  padding: 0.85rem 1rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.mountain-state--error {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.mountain-layout {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.mountain-image-panel {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #f1f5f9;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+  min-height: 420px;
+}
+
+.mountain-image-panel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mountain-image-panel__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.mountain-info-card {
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1.6rem;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+}
+
+.mountain-info-card__title {
+  margin: 0;
+  color: #31473a;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.mountain-info-card__location {
+  margin: 0.3rem 0 1rem;
+  color: #64748b;
+  font-size: 0.92rem;
+}
+
+.mountain-info-card__meta {
+  margin-bottom: 1rem;
+}
+
+.mountain-info-card__meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgb(148 163 184 / 0.2);
+  padding-bottom: 0.45rem;
+}
+
+.mountain-info-card__meta-row + .mountain-info-card__meta-row {
+  margin-top: 0.6rem;
+}
+
+.mountain-info-card__meta-row:last-child {
+  border-bottom: 0;
+}
+
+.mountain-info-card__label {
+  color: #64748b;
+  font-size: 0.88rem;
+}
+
+.mountain-info-card__value {
+  color: #31473a;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mountain-info-card__description {
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.mountain-info-card__back-link {
+  margin-top: 1.1rem;
+  display: inline-block;
+  border-radius: 0.65rem;
+  background: #31473a;
+  color: #fff;
+  padding: 0.6rem 0.95rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mountain-info-card__back-link:hover {
+  filter: brightness(1.08);
+}
+
+@media (min-width: 1024px) {
+  .mountain-layout {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}

@@ -1,0 +1,87 @@
+<div class="profile-page">
+  <app-site-header></app-site-header>
+
+  <main class="profile-main">
+    @if (apiErrorMessage) {
+      <section class="profile-state profile-state--error">
+        {{ apiErrorMessage }}
+      </section>
+    }
+
+    @if (isLoadingProfile) {
+      <section class="profile-state">Loading profile...</section>
+    }
+
+    @if (apiProfile) {
+      <section class="profile-grid">
+        <article class="profile-rank-card">
+          <p class="profile-rank-card__badge">Current rank</p>
+          <h2 class="profile-rank-card__title">{{ apiProfile.rank_title }}</h2>
+          @if (apiProfile.next_rank) {
+            <p class="profile-rank-card__subtitle">
+              Next: {{ apiProfile.next_rank.title }} ({{ apiProfile.next_rank.points_left }} XP
+              left)
+            </p>
+          } @else {
+            <p class="profile-rank-card__subtitle">Maximum rank reached.</p>
+          }
+
+          <div class="profile-stats">
+            <div class="profile-stats__row">
+              <span class="profile-stats__label">Climber</span>
+              <span class="profile-stats__value">{{ apiProfile.username }}</span>
+            </div>
+            <div class="profile-stats__row">
+              <span class="profile-stats__label">Level</span>
+              <span class="profile-stats__value">Level {{ apiProfile.level }}</span>
+            </div>
+            <div class="profile-stats__row">
+              <span class="profile-stats__label">XP</span>
+              <span class="profile-stats__value">{{ apiProfile.experience_points }} XP</span>
+            </div>
+            <div class="profile-stats__row">
+              <span class="profile-stats__label">Ascents</span>
+              <span class="profile-stats__value">{{ apiProfile.ascents_count }}</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-ascents-card">
+          <h2 class="profile-ascents-card__title">Visited mountains</h2>
+          <p class="profile-ascents-card__subtitle">All items are loaded from Django database.</p>
+
+          @if (isLoadingAscents) {
+            <p class="profile-ascents-card__loading">Loading ascents...</p>
+          }
+
+          @if (apiAscents.length) {
+            <div class="profile-ascents-list">
+              @for (ascent of apiAscents; track ascent.id) {
+                <article class="profile-ascent-item">
+                  <div class="profile-ascent-item__top">
+                    <div>
+                      <p class="profile-ascent-item__mountain">{{ ascent.mountain_name }}</p>
+                      <p class="profile-ascent-item__date">{{ ascent.climbed_on }}</p>
+                    </div>
+
+                    <div class="profile-ascent-item__status-wrap">
+                      <p class="profile-ascent-item__status">{{ ascent.status }}</p>
+                    </div>
+                  </div>
+
+                  @if (ascent.notes) {
+                    <p class="profile-ascent-item__notes">{{ ascent.notes }}</p>
+                  }
+                </article>
+              }
+            </div>
+          } @else if (!isLoadingAscents) {
+            <p class="profile-ascents-card__empty">
+              No ascents yet. Add ascents from Django admin panel.
+            </p>
+          }
+        </article>
+      </section>
+    }
+  </main>
+</div>
