@@ -1,0 +1,97 @@
+<div class="bg-background text-on-surface min-h-screen pb-24">
+  <header class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+    <nav class="flex items-center justify-between px-6 h-20 max-w-7xl mx-auto">
+      <a class="flex items-center gap-3" routerLink="/landing">
+        <span class="material-symbols-outlined text-slate-900 text-2xl" data-icon="filter_hdr">filter_hdr</span>
+        <span class="text-2xl font-bold tracking-tighter text-slate-900 font-headline">MOUNT UP</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-slate-500 font-semibold text-sm hover:opacity-80 transition-opacity" routerLink="/landing">Home</a>
+        <a class="text-slate-500 font-semibold text-sm hover:opacity-80 transition-opacity" routerLink="/catalog">Guide</a>
+        <a class="text-slate-500 font-semibold text-sm hover:opacity-80 transition-opacity" routerLink="/leaderboard">Leaderboard</a>
+        <a class="text-slate-500 font-semibold text-sm hover:opacity-80 transition-opacity" routerLink="/about">About Us</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a class="px-4 py-2 rounded-lg border border-primary/20 text-primary font-headline font-bold text-sm tracking-tight hover:bg-primary/5 active:scale-95 transition-transform" routerLink="/login">Log In</a>
+        <a class="px-4 py-2 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm tracking-tight hover:brightness-110 active:scale-95 transition-transform" routerLink="/register">Register</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-28 px-6 max-w-7xl mx-auto">
+    <section class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)] mb-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+        <div>
+          <h1 class="text-4xl font-bold tracking-tight text-primary font-headline">My Profile</h1>
+          <p class="text-sm text-on-surface-variant mt-2 max-w-3xl">{{ backendBindingHint }}</p>
+        </div>
+        <a class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity" routerLink="/catalog">Open mountain guide</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @for (stat of dashboardStats; track stat.label) {
+          <article class="rounded-xl bg-white p-5 border border-outline-variant/20">
+            <p class="text-xs uppercase tracking-wider text-outline font-bold mb-2">{{ stat.label }}</p>
+            <p class="text-2xl font-headline font-bold text-primary">{{ stat.value }}</p>
+            <p class="text-sm text-on-surface-variant mt-1 flex items-center gap-1">
+              <span class="material-symbols-outlined text-sm text-tertiary" [attr.data-icon]="stat.icon">{{ stat.icon }}</span>
+              {{ stat.note }}
+            </p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 mb-8">
+      <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+        <p class="text-xs uppercase tracking-[0.2em] font-label text-secondary mb-2">Current rank</p>
+        <h2 class="text-4xl font-headline font-bold text-primary mb-2">{{ getRank(profileSnapshot.currentRankId).emoji }} {{ getRank(profileSnapshot.currentRankId).title }}</h2>
+        <p class="text-sm text-on-surface-variant mb-4">{{ getRank(profileSnapshot.currentRankId).requirement }}</p>
+
+        <div class="rounded-xl border border-outline-variant/25 bg-white p-4 space-y-2 text-sm">
+          <div class="flex justify-between">
+            <span class="text-on-surface-variant">Climber</span>
+            <span class="font-semibold text-primary">{{ profileSnapshot.climberName }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-on-surface-variant">Level</span>
+            <span class="font-semibold text-primary">{{ profileSnapshot.level }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-on-surface-variant">XP</span>
+            <span class="font-semibold text-primary">{{ profileSnapshot.experience }}</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-2xl bg-surface-container-low p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+        <h2 class="text-2xl font-headline font-bold text-primary mb-4">Visited mountains</h2>
+        <p class="text-sm text-on-surface-variant mb-4">Client/admin can edit this list from backend later. Frontend structure is ready.</p>
+
+        <div class="space-y-3">
+          @for (mountain of visitedMountains; track mountain.id) {
+            <article class="rounded-xl bg-white border border-outline-variant/20 p-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <p class="text-lg font-headline font-bold text-primary">{{ mountain.name }}</p>
+                  <p class="text-sm text-on-surface-variant">{{ mountain.location }}</p>
+                </div>
+
+                <div class="text-sm text-right">
+                  <p class="font-semibold text-primary">{{ mountain.status }}</p>
+                  <p class="text-on-surface-variant">{{ mountain.date }}</p>
+                </div>
+              </div>
+
+              <p class="text-xs text-on-surface-variant mt-3">
+                Minimum rank for this mountain: <span class="font-semibold text-primary">{{ getRank(mountain.minimumRankId).emoji }} {{ getRank(mountain.minimumRankId).title }}</span>
+              </p>
+            </article>
+          }
+        </div>
+      </article>
+    </section>
+  </main>
+</div>

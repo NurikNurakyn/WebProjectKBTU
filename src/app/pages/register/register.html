@@ -1,0 +1,57 @@
+<div class="bg-surface min-h-screen text-on-surface">
+  <header class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+    <nav class="flex items-center justify-between px-6 h-20 max-w-7xl mx-auto">
+      <a class="flex items-center gap-2" routerLink="/landing">
+        <span class="material-symbols-outlined text-primary text-3xl" data-icon="landscape">landscape</span>
+        <span class="text-2xl font-bold tracking-tighter text-slate-900 font-headline uppercase">MOUNT UP</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/landing">Home</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/catalog">Guide</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/leaderboard">Leaderboard</a>
+        <a class="text-slate-500 font-semibold text-sm hover:text-orange-600 transition-colors" routerLink="/about">About Us</a>
+      </div>
+
+      <a class="px-4 py-2 rounded-lg border border-primary/20 text-primary font-headline font-bold text-sm tracking-tight hover:bg-primary/5 transition-transform active:scale-95" routerLink="/login">Log In</a>
+    </nav>
+  </header>
+
+  <main class="pt-28 px-6 pb-16 max-w-xl mx-auto">
+    <section class="bg-surface-container-low rounded-2xl p-8 shadow-[0_12px_40px_rgba(22,40,57,0.06)]">
+      <h1 class="text-3xl font-headline font-bold text-primary mb-2">Create Account</h1>
+      <p class="text-sm text-on-surface-variant mb-6">Frontend placeholder registration form for future backend integration.</p>
+
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <label class="block md:col-span-2">
+          <span class="text-sm font-semibold text-on-surface">Full Name</span>
+          <input class="mt-2 w-full rounded-lg border border-outline-variant/40 bg-white px-3 py-2" placeholder="Your name" type="text" />
+        </label>
+
+        <label class="block md:col-span-2">
+          <span class="text-sm font-semibold text-on-surface">Email</span>
+          <input class="mt-2 w-full rounded-lg border border-outline-variant/40 bg-white px-3 py-2" placeholder="you@example.com" type="email" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-on-surface">Password</span>
+          <input class="mt-2 w-full rounded-lg border border-outline-variant/40 bg-white px-3 py-2" placeholder="Minimum 8 symbols" type="password" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-on-surface">Country</span>
+          <input class="mt-2 w-full rounded-lg border border-outline-variant/40 bg-white px-3 py-2" placeholder="Kazakhstan" type="text" />
+        </label>
+
+        <button class="md:col-span-2 mt-2 px-4 py-2.5 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm tracking-tight" type="button">
+          Register
+        </button>
+      </form>
+
+      <p class="text-sm text-on-surface-variant mt-5">
+        Already have an account?
+        <a class="text-primary font-semibold hover:opacity-80 transition-opacity" routerLink="/login">Log in</a>
+      </p>
+    </section>
+  </main>
+</div>
