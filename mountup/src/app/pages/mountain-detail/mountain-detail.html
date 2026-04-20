@@ -37,7 +37,7 @@
             </div>
             <div class="mountain-info-card__meta-row">
               <span class="mountain-info-card__label">Difficulty</span>
-              <span class="mountain-info-card__value">{{ mountain.difficulty }}</span>
+              <span class="mountain-info-card__value">{{ mountain.difficulty_label }}</span>
             </div>
             <div class="mountain-info-card__meta-row">
               <span class="mountain-info-card__label">Created by</span>
@@ -52,6 +52,116 @@
           <a class="mountain-info-card__back-link" routerLink="/catalog">Back to catalog</a>
         </article>
       </section>
+
+      <section class="mountain-sections-grid">
+        <article class="mountain-card">
+          <h2 class="mountain-card__title">Progress and rewards</h2>
+          <div class="mountain-card__rows">
+            <p><span>XP reward</span><strong>+{{ mountain.progress_and_rewards.xp_reward }} XP</strong></p>
+            <p><span>Recommended level</span><strong>Level {{ mountain.progress_and_rewards.recommended_level }}</strong></p>
+            <p><span>Difficulty badge</span><strong>{{ mountain.progress_and_rewards.difficulty_badge }}</strong></p>
+            <p><span>Estimated duration</span><strong>{{ mountain.progress_and_rewards.estimated_duration_hours }}h</strong></p>
+          </div>
+        </article>
+
+        <article class="mountain-card">
+          <h2 class="mountain-card__title">Safety mini panel</h2>
+          <div class="mountain-card__rows">
+            <p><span>Weather</span><strong>{{ mountain.safety_panel.weather_window }}</strong></p>
+            <p><span>Avalanche risk</span><strong>{{ mountain.safety_panel.avalanche_risk }}</strong></p>
+            <p><span>Last update</span><strong>{{ mountain.safety_panel.last_update | date: 'medium' }}</strong></p>
+          </div>
+          <button class="mountain-card__action" type="button" (click)="openSafetyModal()">
+            Safety Alerts
+          </button>
+        </article>
+
+        <article class="mountain-card">
+          <h2 class="mountain-card__title">Route checkpoints</h2>
+          <div class="mountain-checkpoints">
+            @for (checkpoint of mountain.route_checkpoints; track checkpoint.name) {
+              <div class="mountain-checkpoints__item">
+                <p class="mountain-checkpoints__name">{{ checkpoint.name }}</p>
+                <p class="mountain-checkpoints__meta">{{ checkpoint.elevation_m }} m · ETA {{ checkpoint.eta_hours }}h</p>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article class="mountain-card">
+          <h2 class="mountain-card__title">Gear checklist</h2>
+          <p class="mountain-card__subtitle">Mandatory</p>
+          <div class="mountain-gear-list">
+            @for (gear of mountain.gear_checklist.mandatory; track gear.label) {
+              <div class="mountain-gear-item">
+                <span class="material-symbols-outlined" [attr.data-icon]="gear.icon">{{ gear.icon }}</span>
+                <span>{{ gear.label }}</span>
+              </div>
+            }
+          </div>
+          <p class="mountain-card__subtitle">Recommended</p>
+          <div class="mountain-gear-list">
+            @for (gear of mountain.gear_checklist.recommended; track gear.label) {
+              <div class="mountain-gear-item">
+                <span class="material-symbols-outlined" [attr.data-icon]="gear.icon">{{ gear.icon }}</span>
+                <span>{{ gear.label }}</span>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article class="mountain-card mountain-card--full">
+          <h2 class="mountain-card__title">Community stats</h2>
+          <div class="mountain-card__rows">
+            <p><span>Total ascents</span><strong>{{ mountain.community_stats.ascents_count }}</strong></p>
+            <p><span>Completed ascents</span><strong>{{ mountain.community_stats.completed_ascents_count }}</strong></p>
+            <p><span>Average difficulty rating</span><strong>{{ mountain.community_stats.average_difficulty_rating }} / 5</strong></p>
+          </div>
+
+          <div class="mountain-themes">
+            <p class="mountain-card__subtitle">Frequent comment themes</p>
+            @if (mountain.community_stats.common_comment_themes.length) {
+              <div class="mountain-themes__list">
+                @for (theme of mountain.community_stats.common_comment_themes; track theme) {
+                  <span class="mountain-theme-chip">{{ theme }}</span>
+                }
+              </div>
+            } @else {
+              <p class="mountain-themes__empty">No comment themes yet.</p>
+            }
+          </div>
+
+          <div class="mountain-comments">
+            <p class="mountain-card__subtitle">Recent comments</p>
+            @if (mountain.community_stats.recent_comments.length) {
+              @for (comment of mountain.community_stats.recent_comments; track comment.created_at) {
+                <div class="mountain-comment-item">
+                  <p class="mountain-comment-item__meta">{{ comment.username }} · {{ comment.created_at | date: 'short' }}</p>
+                  <p class="mountain-comment-item__body">{{ comment.body }}</p>
+                </div>
+              }
+            } @else {
+              <p class="mountain-themes__empty">No comments yet.</p>
+            }
+          </div>
+        </article>
+      </section>
     }
   </main>
+
+  @if (isSafetyModalOpen) {
+    <section class="mountain-modal-backdrop" (click)="closeSafetyModal()">
+      <article class="mountain-modal" (click)="$event.stopPropagation()">
+        <div class="mountain-modal__header">
+          <h3>Safety Alerts</h3>
+          <button type="button" (click)="closeSafetyModal()">Close</button>
+        </div>
+        <div class="mountain-modal__content">
+          <p>Always verify weather 12-24h before departure.</p>
+          <p>Use fixed turnaround time regardless of summit distance.</p>
+          <p>For high altitude routes, use acclimatization and backup descent plan.</p>
+        </div>
+      </article>
+    </section>
+  }
 </div>

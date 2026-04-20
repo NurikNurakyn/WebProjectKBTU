@@ -1,13 +1,14 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { SiteHeaderComponent } from '../../components/site-header/site-header';
-import { ApiErrorResponse, Mountain } from '../../interfaces/api';
+import { ApiErrorResponse, MountainDetailResponse } from '../../interfaces/api';
 import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-mountain-detail',
-  imports: [RouterLink, SiteHeaderComponent],
+  imports: [CommonModule, RouterLink, SiteHeaderComponent],
   templateUrl: './mountain-detail.html',
   styleUrl: './mountain-detail.css',
 })
@@ -15,9 +16,10 @@ export class MountainDetail {
   private readonly route = inject(ActivatedRoute);
   private readonly apiService = inject(ApiService);
 
-  mountain: Mountain | null = null;
+  mountain: MountainDetailResponse | null = null;
   isLoading = false;
   errorMessage = '';
+  isSafetyModalOpen = false;
 
   constructor() {
     this.loadMountain();
@@ -46,5 +48,13 @@ export class MountainDetail {
         this.isLoading = false;
       },
     });
+  }
+
+  openSafetyModal(): void {
+    this.isSafetyModalOpen = true;
+  }
+
+  closeSafetyModal(): void {
+    this.isSafetyModalOpen = false;
   }
 }

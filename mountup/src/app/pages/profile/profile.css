@@ -65,6 +65,61 @@
   font-size: 0.9rem;
 }
 
+.profile-level-progress {
+  margin-bottom: 1rem;
+}
+
+.profile-level-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.profile-level-progress__bar {
+  margin-top: 0.35rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.profile-level-progress__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c08423 0%, #4d7c0f 100%);
+}
+
+.profile-level-progress__hint {
+  margin: 0.45rem 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.profile-level-flavor {
+  margin-bottom: 0.95rem;
+  padding: 0.75rem 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgb(148 163 184 / 0.25);
+  background: #f8fafc;
+}
+
+.profile-level-flavor__title {
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.profile-level-flavor__hint {
+  margin: 0.28rem 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 .profile-stats {
   border-radius: 0.8rem;
   border: 1px solid rgb(148 163 184 / 0.25);
@@ -92,6 +147,28 @@
   font-weight: 600;
 }
 
+.profile-personal {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border: 1px solid rgb(148 163 184 / 0.25);
+  border-radius: 0.8rem;
+  background: #f8fafc;
+}
+
+.profile-personal__title {
+  margin: 0 0 0.6rem;
+  color: #334155;
+  font-size: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.profile-personal__line {
+  margin: 0.35rem 0 0;
+  color: #475569;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
 .profile-ascents-card__title {
   margin: 0;
   color: #31473a;
@@ -106,6 +183,73 @@
   margin: 0.7rem 0 0;
   color: #64748b;
   font-size: 0.9rem;
+}
+
+.profile-overview {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.profile-overview__item {
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 0.8rem;
+  background: #f8fafc;
+  padding: 0.75rem;
+}
+
+.profile-overview__label {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.77rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.profile-overview__value {
+  margin: 0.25rem 0 0;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.profile-breakdown {
+  margin-top: 0.9rem;
+}
+
+.profile-breakdown__title {
+  margin: 0;
+  color: #334155;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.profile-breakdown__grid {
+  margin-top: 0.55rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.profile-breakdown__item {
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 0.7rem;
+  background: #fff;
+  padding: 0.55rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.profile-breakdown__item strong {
+  color: #1e293b;
+  font-size: 0.95rem;
 }
 
 .profile-ascents-list {
@@ -154,6 +298,13 @@
   text-transform: capitalize;
 }
 
+.profile-ascent-item__xp {
+  margin: 0.2rem 0 0;
+  color: #b45309;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .profile-ascent-item__notes {
   margin: 0.65rem 0 0;
   color: #64748b;
@@ -161,7 +312,78 @@
   line-height: 1.6;
 }
 
+.profile-tier--novice .profile-rank-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.profile-tier--amateur .profile-rank-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.profile-tier--amateur .profile-level-progress__fill {
+  background: linear-gradient(90deg, #16a34a 0%, #0ea5a3 100%);
+}
+
+.profile-tier--pro .profile-rank-card {
+  background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+}
+
+.profile-tier--pro .profile-level-progress__fill {
+  background: linear-gradient(90deg, #2563eb 0%, #06b6d4 100%);
+}
+
+.profile-tier--master .profile-rank-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%);
+}
+
+.profile-tier--master .profile-level-progress__fill {
+  background: linear-gradient(90deg, #7c3aed 0%, #ec4899 100%);
+}
+
+.profile-tier--sovereign .profile-rank-card {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  color: #e2e8f0;
+}
+
+.profile-tier--sovereign .profile-rank-card__title,
+.profile-tier--sovereign .profile-stats__value,
+.profile-tier--sovereign .profile-level-flavor__title {
+  color: #f8fafc;
+}
+
+.profile-tier--sovereign .profile-rank-card__subtitle,
+.profile-tier--sovereign .profile-level-progress__meta,
+.profile-tier--sovereign .profile-level-progress__hint,
+.profile-tier--sovereign .profile-stats__label,
+.profile-tier--sovereign .profile-level-flavor__hint {
+  color: #cbd5e1;
+}
+
+.profile-tier--sovereign .profile-stats,
+.profile-tier--sovereign .profile-level-flavor,
+.profile-tier--sovereign .profile-personal {
+  border-color: rgb(148 163 184 / 0.35);
+  background: rgb(15 23 42 / 0.75);
+}
+
+.profile-tier--sovereign .profile-personal__title,
+.profile-tier--sovereign .profile-personal__line {
+  color: #e2e8f0;
+}
+
+.profile-tier--sovereign .profile-level-progress__bar {
+  background: rgb(30 41 59 / 0.9);
+}
+
+.profile-tier--sovereign .profile-level-progress__fill {
+  background: linear-gradient(90deg, #38bdf8 0%, #f59e0b 100%);
+}
+
 @media (min-width: 640px) {
+  .profile-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .profile-ascent-item__top {
     flex-direction: row;
     align-items: center;

@@ -6,9 +6,9 @@
 }
 
 .catalog-main {
-  max-width: 1200px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 8rem 1.5rem 3rem;
+  padding: 6.55rem 1rem 3rem;
 }
 
 .catalog-hero {
@@ -16,7 +16,7 @@
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .catalog-hero__badge {
@@ -95,6 +95,118 @@
   opacity: 0.8;
 }
 
+.catalog-hero__link-btn {
+  border: 0;
+  background: transparent;
+  color: #31473a;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.catalog-filters {
+  margin-bottom: 0;
+  border: 1px solid rgb(148 163 184 / 0.25);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.catalog-filters__title {
+  margin: 0 0 0.2rem;
+  color: #1f2937;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+}
+
+.catalog-filters__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.catalog-filters__label {
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.catalog-filters__input,
+.catalog-filters__select {
+  border: 1px solid rgb(148 163 184 / 0.35);
+  border-radius: 0.65rem;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.9rem;
+  color: #1e293b;
+  background: #f8fafc;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.catalog-filters__input:focus,
+.catalog-filters__select:focus {
+  outline: 0;
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgb(15 118 110 / 0.14);
+  background: #fff;
+}
+
+.catalog-filters__select-wrap {
+  position: relative;
+}
+
+.catalog-filters__select-wrap::after {
+  content: 'expand_more';
+  font-family: 'Material Symbols Outlined';
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+.catalog-filters__select {
+  width: 100%;
+  appearance: none;
+  padding-right: 2rem;
+}
+
+.catalog-filters__actions {
+  display: flex;
+  align-items: flex-end;
+}
+
+.catalog-filters__clear {
+  border: 0;
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, #31473a 0%, #0f766e 100%);
+  color: #fff;
+  padding: 0.58rem 0.95rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.catalog-content {
+  min-width: 0;
+}
+
 .catalog-state {
   margin-bottom: 1.5rem;
   border: 1px solid #d7e1dc;
@@ -114,20 +226,32 @@
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .catalog-card {
   overflow: hidden;
   border-radius: 1rem;
   background: #fff;
-  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+  border: 1px solid rgb(226 232 240 / 0.9);
+  box-shadow: 0 14px 34px rgb(22 40 57 / 0.06);
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(15 118 110 / 0.25);
+  box-shadow: 0 20px 38px rgb(15 23 42 / 0.13);
 }
 
 .catalog-card__image-wrap {
-  height: 18rem;
+  height: 18.8rem;
   overflow: hidden;
   background: #f1f5f9;
+  position: relative;
 }
 
 .catalog-card__image {
@@ -153,6 +277,20 @@
 
 .catalog-card__body {
   padding: 1.4rem;
+}
+
+.catalog-card__difficulty-chip {
+  position: absolute;
+  left: 0.7rem;
+  top: 0.7rem;
+  z-index: 2;
+  border-radius: 999px;
+  padding: 0.28rem 0.6rem;
+  background: rgb(15 23 42 / 0.72);
+  color: #f8fafc;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .catalog-card__title {
@@ -181,7 +319,7 @@
   align-items: center;
   gap: 0.35rem;
   border-radius: 0.65rem;
-  background: #31473a;
+  background: linear-gradient(135deg, #31473a 0%, #0f766e 100%);
   color: #fff;
   padding: 0.6rem 0.95rem;
   font-size: 0.85rem;
@@ -243,9 +381,66 @@
   text-transform: uppercase;
 }
 
+.catalog-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgb(15 23 42 / 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.catalog-modal {
+  width: min(680px, 100%);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.25);
+  padding: 1rem;
+}
+
+.catalog-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.catalog-modal__title {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.catalog-modal__close {
+  border: 1px solid rgb(148 163 184 / 0.35);
+  border-radius: 0.55rem;
+  background: #fff;
+  color: #334155;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.catalog-modal__content {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.catalog-modal__content p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.5;
+}
+
 @media (min-width: 768px) {
   .catalog-main {
-    padding-top: 8.6rem;
+    padding-top: 6.9rem;
   }
 
   .catalog-hero {
@@ -256,11 +451,30 @@
   .catalog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
 }
 
 @media (min-width: 1024px) {
+  .catalog-layout {
+    grid-template-columns: 295px minmax(0, 1fr);
+    align-items: start;
+    gap: 0.7rem;
+  }
+
+  .catalog-filters {
+    position: sticky;
+    top: 6.4rem;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
   .catalog-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.95rem;
   }
 }
 

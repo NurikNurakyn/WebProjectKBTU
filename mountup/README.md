@@ -1,6 +1,6 @@
 # MOUNT UP - KBTU Web Project
 
-MOUNT UP is a full-stack web application for mountain climbers. The project combines an Angular frontend and a Django REST Framework backend with JWT authentication.
+MOUNT UP is a full-stack web application for mountain climbers who can monitor their progress and learn information about the mountains. The project combines an Angular frontend and a Django REST Framework backend with JWT authentication.
 
 ## Team
 

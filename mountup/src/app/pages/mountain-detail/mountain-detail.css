@@ -133,8 +133,223 @@
   filter: brightness(1.08);
 }
 
+.mountain-sections-grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mountain-card {
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 12px 40px rgb(22 40 57 / 0.06);
+  padding: 1rem;
+}
+
+.mountain-card--full {
+  grid-column: 1 / -1;
+}
+
+.mountain-card__title {
+  margin: 0;
+  color: #1f2937;
+  font-size: 1.2rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.mountain-card__subtitle {
+  margin: 0.8rem 0 0.5rem;
+  color: #64748b;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.mountain-card__rows {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mountain-card__rows p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgb(148 163 184 / 0.2);
+  padding-bottom: 0.35rem;
+}
+
+.mountain-card__rows span {
+  color: #64748b;
+}
+
+.mountain-card__rows strong {
+  color: #1f2937;
+}
+
+.mountain-card__action {
+  margin-top: 0.7rem;
+  border: 0;
+  border-radius: 0.65rem;
+  background: #0f766e;
+  color: #fff;
+  padding: 0.52rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mountain-checkpoints {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mountain-checkpoints__item {
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 0.7rem;
+  padding: 0.55rem;
+  background: #f8fafc;
+}
+
+.mountain-checkpoints__name {
+  margin: 0;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.mountain-checkpoints__meta {
+  margin: 0.2rem 0 0;
+  color: #64748b;
+  font-size: 0.84rem;
+}
+
+.mountain-gear-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mountain-gear-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.mountain-themes__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.mountain-theme-chip {
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #334155;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.mountain-themes__empty {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.mountain-comments {
+  margin-top: 0.8rem;
+}
+
+.mountain-comment-item {
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 0.7rem;
+  background: #fff;
+  padding: 0.6rem;
+}
+
+.mountain-comment-item + .mountain-comment-item {
+  margin-top: 0.45rem;
+}
+
+.mountain-comment-item__meta {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.77rem;
+}
+
+.mountain-comment-item__body {
+  margin: 0.32rem 0 0;
+  color: #334155;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.mountain-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgb(15 23 42 / 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.mountain-modal {
+  width: min(560px, 100%);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.25);
+  padding: 1rem;
+}
+
+.mountain-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.mountain-modal__header h3 {
+  margin: 0;
+  color: #1f2937;
+}
+
+.mountain-modal__header button {
+  border: 1px solid rgb(148 163 184 / 0.35);
+  border-radius: 0.55rem;
+  background: #fff;
+  color: #334155;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mountain-modal__content {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mountain-modal__content p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.5;
+}
+
 @media (min-width: 1024px) {
   .mountain-layout {
     grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .mountain-sections-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

@@ -33,6 +33,7 @@ class LogoutSerializer(serializers.Serializer):
 
 class MountainSerializer(serializers.ModelSerializer):
     created_by_username = serializers.CharField(source="created_by.username", read_only=True)
+    difficulty_label = serializers.CharField(source="get_difficulty_display", read_only=True)
 
     class Meta:
         model = Mountain
@@ -43,6 +44,7 @@ class MountainSerializer(serializers.ModelSerializer):
             "image_url",
             "elevation_m",
             "difficulty",
+            "difficulty_label",
             "description",
             "is_featured",
             "created_by",
@@ -56,6 +58,9 @@ class MountainSerializer(serializers.ModelSerializer):
 class AscentSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source="user.username", read_only=True)
     mountain_name = serializers.CharField(source="mountain.name", read_only=True)
+    mountain_elevation_m = serializers.IntegerField(source="mountain.elevation_m", read_only=True)
+    mountain_difficulty = serializers.CharField(source="mountain.difficulty", read_only=True)
+    mountain_difficulty_label = serializers.CharField(source="mountain.get_difficulty_display", read_only=True)
 
     class Meta:
         model = Ascent
@@ -65,12 +70,25 @@ class AscentSerializer(serializers.ModelSerializer):
             "username",
             "mountain",
             "mountain_name",
+            "mountain_elevation_m",
+            "mountain_difficulty",
+            "mountain_difficulty_label",
             "climbed_on",
             "notes",
             "status",
+            "awarded_xp",
             "created_at",
         ]
-        read_only_fields = ["user", "username", "mountain_name", "created_at"]
+        read_only_fields = [
+            "user",
+            "username",
+            "mountain_name",
+            "mountain_elevation_m",
+            "mountain_difficulty",
+            "mountain_difficulty_label",
+            "awarded_xp",
+            "created_at",
+        ]
 
 
 class CommentSerializer(serializers.ModelSerializer):

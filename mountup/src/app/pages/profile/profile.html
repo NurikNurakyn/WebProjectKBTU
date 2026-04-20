@@ -13,7 +13,7 @@
     }
 
     @if (apiProfile) {
-      <section class="profile-grid">
+      <section class="profile-grid" [ngClass]="levelTierClass">
         <article class="profile-rank-card">
           <p class="profile-rank-card__badge">Current rank</p>
           <h2 class="profile-rank-card__title">{{ apiProfile.rank_title }}</h2>
@@ -25,6 +25,25 @@
           } @else {
             <p class="profile-rank-card__subtitle">Maximum rank reached.</p>
           }
+
+          <div class="profile-level-progress">
+            <div class="profile-level-progress__meta">
+              <span>Level progress</span>
+              <span>{{ levelProgressPercent | number: '1.0-0' }}%</span>
+            </div>
+            <div class="profile-level-progress__bar">
+              <div
+                class="profile-level-progress__fill"
+                [style.width.%]="levelProgressPercent"
+              ></div>
+            </div>
+            <p class="profile-level-progress__hint">{{ xpToNextLevel }} XP to the next level</p>
+          </div>
+
+          <div class="profile-level-flavor">
+            <p class="profile-level-flavor__title">{{ levelFlavorTitle }}</p>
+            <p class="profile-level-flavor__hint">{{ levelFlavorHint }}</p>
+          </div>
 
           <div class="profile-stats">
             <div class="profile-stats__row">
@@ -43,12 +62,77 @@
               <span class="profile-stats__label">Ascents</span>
               <span class="profile-stats__value">{{ apiProfile.ascents_count }}</span>
             </div>
+            <div class="profile-stats__row">
+              <span class="profile-stats__label">Completed ascents</span>
+              <span class="profile-stats__value">{{ apiProfile.completed_ascents_count }}</span>
+            </div>
+            <div class="profile-stats__row">
+              <span class="profile-stats__label">Total climbed elevation</span>
+              <span class="profile-stats__value"
+                >{{ apiProfile.total_elevation_climbed_m | number }} m</span
+              >
+            </div>
+          </div>
+
+          <div class="profile-personal">
+            <h3 class="profile-personal__title">Climber profile</h3>
+            <p class="profile-personal__line"><strong>Email:</strong> {{ apiProfile.email }}</p>
+            <p class="profile-personal__line">
+              <strong>Country:</strong> {{ apiProfile.country || 'Not specified' }}
+            </p>
+            <p class="profile-personal__line"><strong>Bio:</strong> {{ apiProfile.bio || 'No bio yet' }}</p>
           </div>
         </article>
 
         <article class="profile-ascents-card">
           <h2 class="profile-ascents-card__title">Visited mountains</h2>
           <p class="profile-ascents-card__subtitle">All items are loaded from Django database.</p>
+
+          <div class="profile-overview">
+            <div class="profile-overview__item">
+              <p class="profile-overview__label">Highest mountain</p>
+              <p class="profile-overview__value">
+                @if (apiProfile.highest_mountain) {
+                  {{ apiProfile.highest_mountain.name }} ({{ apiProfile.highest_mountain.elevation_m | number }} m)
+                } @else {
+                  -
+                }
+              </p>
+            </div>
+            <div class="profile-overview__item">
+              <p class="profile-overview__label">Recent ascent</p>
+              <p class="profile-overview__value">
+                @if (apiProfile.recent_ascent) {
+                  {{ apiProfile.recent_ascent.mountain_name }} ·
+                  {{ apiProfile.recent_ascent.climbed_on }} · +{{ apiProfile.recent_ascent.awarded_xp }} XP
+                } @else {
+                  -
+                }
+              </p>
+            </div>
+          </div>
+
+          <div class="profile-breakdown">
+            <p class="profile-breakdown__title">Ascent breakdown by altitude</p>
+            <div class="profile-breakdown__grid">
+              <div class="profile-breakdown__item">
+                <span>&lt; 4500 m</span>
+                <strong>{{ apiProfile.ascent_breakdown.under_4500 }}</strong>
+              </div>
+              <div class="profile-breakdown__item">
+                <span>4500-5999 m</span>
+                <strong>{{ apiProfile.ascent_breakdown.from_4500_to_5999 }}</strong>
+              </div>
+              <div class="profile-breakdown__item">
+                <span>6000-7999 m</span>
+                <strong>{{ apiProfile.ascent_breakdown.from_6000_to_7999 }}</strong>
+              </div>
+              <div class="profile-breakdown__item">
+                <span>8000+ m</span>
+                <strong>{{ apiProfile.ascent_breakdown.over_or_equal_8000 }}</strong>
+              </div>
+            </div>
+          </div>
 
           @if (isLoadingAscents) {
             <p class="profile-ascents-card__loading">Loading ascents...</p>
@@ -61,11 +145,14 @@
                   <div class="profile-ascent-item__top">
                     <div>
                       <p class="profile-ascent-item__mountain">{{ ascent.mountain_name }}</p>
-                      <p class="profile-ascent-item__date">{{ ascent.climbed_on }}</p>
+                      <p class="profile-ascent-item__date">
+                        {{ ascent.climbed_on }} · {{ ascent.mountain_elevation_m | number }} m
+                      </p>
                     </div>
 
                     <div class="profile-ascent-item__status-wrap">
                       <p class="profile-ascent-item__status">{{ ascent.status }}</p>
+                      <p class="profile-ascent-item__xp">+{{ ascent.awarded_xp }} XP</p>
                     </div>
                   </div>
 

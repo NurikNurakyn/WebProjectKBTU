@@ -10,6 +10,7 @@ import {
   LogoutRequest,
   MessageResponse,
   Mountain,
+  MountainDetailResponse,
   ProfileResponse,
   RegisterRequest,
   RegisterResponse,
@@ -39,8 +40,8 @@ export class ApiService {
     return this.http.get<Mountain[]>(`${this.baseUrl}/mountains/`);
   }
 
-  getMountainById(id: number): Observable<Mountain> {
-    return this.http.get<Mountain>(`${this.baseUrl}/mountains/${id}/`);
+  getMountainById(id: number): Observable<MountainDetailResponse> {
+    return this.http.get<MountainDetailResponse>(`${this.baseUrl}/mountains/${id}/`);
   }
 
   getProfile(): Observable<ProfileResponse> {

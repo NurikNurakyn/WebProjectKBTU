@@ -50,3 +50,4 @@ backend/db.sqlite3
 backend/**/__pycache__/
 
 READM.md
+defense.txt

@@ -8,11 +8,23 @@ class MountainQuerySet(models.QuerySet):
 
 
 class Mountain(models.Model):
+	DIFFICULTY_BEGINNER = "beginner"
+	DIFFICULTY_INTERMEDIATE = "intermediate"
+	DIFFICULTY_ADVANCED = "advanced"
+	DIFFICULTY_EXPERT = "expert"
+
+	DIFFICULTY_CHOICES = (
+		(DIFFICULTY_BEGINNER, "Beginner"),
+		(DIFFICULTY_INTERMEDIATE, "Intermediate"),
+		(DIFFICULTY_ADVANCED, "Advanced"),
+		(DIFFICULTY_EXPERT, "Expert"),
+	)
+
 	name = models.CharField(max_length=120)
 	location = models.CharField(max_length=160)
 	image_url = models.URLField(blank=True)
 	elevation_m = models.PositiveIntegerField()
-	difficulty = models.CharField(max_length=64)
+	difficulty = models.CharField(max_length=16, choices=DIFFICULTY_CHOICES)
 	description = models.TextField(blank=True)
 	is_featured = models.BooleanField(default=False)
 	created_by = models.ForeignKey(
@@ -35,11 +47,10 @@ class Mountain(models.Model):
 class UserProfile(models.Model):
 	RANK_RULES = (
 		(0, "Novice"),
-		(500, "Tourist"),
-		(1200, "Amateur"),
-		(2500, "Path Finder"),
-		(4500, "Summit Seeker"),
-		(7000, "Alpine Master"),
+		(2000, "Amateur"),
+		(4500, "Pro Climber"),
+		(7000, "Master Alpinist"),
+		(9500, "Sky Sovereign"),
 	)
 
 	user = models.OneToOneField(
@@ -103,9 +114,59 @@ class Ascent(models.Model):
 	notes = models.TextField(blank=True)
 	status = models.CharField(max_length=16, choices=STATUS_CHOICES, default=STATUS_PENDING)
 	created_at = models.DateTimeField(auto_now_add=True)
+	awarded_xp = models.PositiveIntegerField(default=0)
 
 	class Meta:
 		ordering = ["-climbed_on", "-id"]
+
+	@staticmethod
+	def xp_for_elevation(elevation_m: int) -> int:
+		if elevation_m >= 8000:
+			return 5000
+		if elevation_m >= 6000:
+			return 1000
+		if elevation_m >= 4500:
+			return 500
+		return 250
+
+	@staticmethod
+	def xp_for_difficulty(difficulty: str) -> int:
+		difficulty_bonus = {
+			Mountain.DIFFICULTY_BEGINNER: 0,
+			Mountain.DIFFICULTY_INTERMEDIATE: 250,
+			Mountain.DIFFICULTY_ADVANCED: 1000,
+			Mountain.DIFFICULTY_EXPERT: 5000,
+		}
+		return difficulty_bonus.get(difficulty, 0)
+
+	def _is_xp_eligible(self) -> bool:
+		return self.status != self.STATUS_PLANNED
+
+	def save(self, *args, **kwargs):
+		is_new = self.pk is None
+		previous = None
+		if not is_new:
+			previous = Ascent.objects.select_related("mountain").get(pk=self.pk)
+
+		super().save(*args, **kwargs)
+
+		profile, _ = UserProfile.objects.get_or_create(user=self.user)
+		new_award = 0
+		if self._is_xp_eligible():
+			new_award = self.xp_for_elevation(self.mountain.elevation_m) + self.xp_for_difficulty(
+				self.mountain.difficulty
+			)
+		old_award = previous.awarded_xp if previous else 0
+
+		if new_award == old_award:
+			return
+
+		delta = new_award - old_award
+		profile.experience_points = max(0, profile.experience_points + delta)
+		profile.save(update_fields=["experience_points"])
+
+		self.awarded_xp = new_award
+		type(self).objects.filter(pk=self.pk).update(awarded_xp=new_award)
 
 	def __str__(self) -> str:
 		return f"{self.user.username} -> {self.mountain.name}"

@@ -20,55 +20,99 @@
         >
           {{ isLoadingApiMountains ? 'Loading...' : 'Reload from API' }}
         </button>
-        <a class="catalog-hero__link" routerLink="/about">View rank system</a>
+        <button class="catalog-hero__link-btn" type="button" (click)="openRankModal()">
+          View rank system
+        </button>
       </div>
     </section>
 
-    @if (apiErrorMessage) {
-      <section class="catalog-state catalog-state--error">
-        {{ apiErrorMessage }}
-      </section>
-    }
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h3 class="catalog-filters__title">Filter Mountains</h3>
 
-    @if (isLoadingApiMountains) {
-      <section class="catalog-state">Loading mountains from Django...</section>
-    }
+        <label class="catalog-filters__group">
+          <span class="catalog-filters__label">Search by mountain name</span>
+          <input
+            class="catalog-filters__input"
+            type="text"
+            placeholder="Type mountain name..."
+            [(ngModel)]="searchQuery"
+          />
+        </label>
 
-    @if (apiMountains.length) {
-      <section class="catalog-grid">
-        @for (mountain of apiMountains; track mountain.id) {
-          <article class="catalog-card">
-            <div class="catalog-card__image-wrap">
-              @if (mountain.image_url) {
-                <img [src]="mountain.image_url" [alt]="mountain.name" class="catalog-card__image" />
-              } @else {
-                <div class="catalog-card__image-placeholder">No image URL in Django yet</div>
+        <label class="catalog-filters__group">
+          <span class="catalog-filters__label">Difficulty</span>
+          <div class="catalog-filters__select-wrap">
+            <select class="catalog-filters__select" [(ngModel)]="selectedDifficulty">
+              @for (item of difficultyFilters; track item.value) {
+                <option [value]="item.value">{{ item.label }}</option>
               }
-            </div>
+            </select>
+          </div>
+        </label>
 
-            <div class="catalog-card__body">
-              <h3 class="catalog-card__title">{{ mountain.name }}</h3>
-              <p class="catalog-card__location">{{ mountain.location }}</p>
-              <p class="catalog-card__meta">
-                {{ mountain.elevation_m }} m • {{ mountain.difficulty }}
-              </p>
+        <label class="catalog-filters__group">
+          <span class="catalog-filters__label">Min elevation (m)</span>
+          <input class="catalog-filters__input" type="number" min="0" [(ngModel)]="minElevation" />
+        </label>
 
-              <a class="catalog-card__action" [routerLink]="['/mountains', mountain.id]">
-                Learn more
-                <span class="material-symbols-outlined" data-icon="arrow_forward"
-                  >arrow_forward</span
-                >
-              </a>
-            </div>
-          </article>
+        <label class="catalog-filters__group">
+          <span class="catalog-filters__label">Max elevation (m)</span>
+          <input class="catalog-filters__input" type="number" min="0" [(ngModel)]="maxElevation" />
+        </label>
+
+        <div class="catalog-filters__actions">
+          <button class="catalog-filters__clear" type="button" (click)="clearFilters()">Clear filters</button>
+        </div>
+      </aside>
+
+      <div class="catalog-content">
+        @if (apiErrorMessage) {
+          <section class="catalog-state catalog-state--error">
+            {{ apiErrorMessage }}
+          </section>
         }
-      </section>
-    } @else if (!isLoadingApiMountains && !apiErrorMessage) {
-      <section class="catalog-state">
-        No mountains yet. Add mountain records in Django admin panel and they will appear here
-        automatically.
-      </section>
-    }
+
+        @if (isLoadingApiMountains) {
+          <section class="catalog-state">Loading mountains from Django...</section>
+        }
+
+        @if (filteredMountains.length) {
+          <section class="catalog-grid">
+            @for (mountain of filteredMountains; track mountain.id) {
+              <article class="catalog-card">
+                <div class="catalog-card__image-wrap">
+                  @if (mountain.image_url) {
+                    <img [src]="mountain.image_url" [alt]="mountain.name" class="catalog-card__image" />
+                  } @else {
+                    <div class="catalog-card__image-placeholder">No image URL in Django yet</div>
+                  }
+                  <span class="catalog-card__difficulty-chip">{{ mountain.difficulty_label }}</span>
+                </div>
+
+                <div class="catalog-card__body">
+                  <h3 class="catalog-card__title">{{ mountain.name }}</h3>
+                  <p class="catalog-card__location">{{ mountain.location }}</p>
+                  <p class="catalog-card__meta">{{ mountain.elevation_m }} m</p>
+
+                  <a class="catalog-card__action" [routerLink]="['/mountains', mountain.id]">
+                    Learn more
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+                  </a>
+                </div>
+              </article>
+            }
+          </section>
+        } @else if (!isLoadingApiMountains && !apiErrorMessage && apiMountains.length) {
+          <section class="catalog-state">No mountains match current filters.</section>
+        } @else if (!isLoadingApiMountains && !apiErrorMessage) {
+          <section class="catalog-state">
+            No mountains yet. Add mountain records in Django admin panel and they will appear here
+            automatically.
+          </section>
+        }
+      </div>
+    </section>
   </main>
 
   <nav class="catalog-mobile-nav">
@@ -85,4 +129,25 @@
       <span class="catalog-mobile-nav__label">About</span>
     </a>
   </nav>
+
+  @if (isRankModalOpen) {
+    <section class="catalog-modal-backdrop" (click)="closeRankModal()">
+      <article class="catalog-modal" (click)="$event.stopPropagation()">
+        <div class="catalog-modal__header">
+          <h3 class="catalog-modal__title">Rank System</h3>
+          <button class="catalog-modal__close" type="button" (click)="closeRankModal()">Close</button>
+        </div>
+
+        <div class="catalog-modal__content">
+          <p>Level 1-4: Novice</p>
+          <p>Level 5-9: Amateur</p>
+          <p>Level 10-14: Pro Climber</p>
+          <p>Level 15-19: Master Alpinist</p>
+          <p>Level 20+: Sky Sovereign</p>
+          <p>XP by height: &lt;4500m = +250, 4500-5999m = +500, 6000-7999m = +1000, 8000m+ = +5000.</p>
+          <p>XP bonus by difficulty: Beginner +0, Intermediate +250, Advanced +1000, Expert +5000.</p>
+        </div>
+      </article>
+    </section>
+  }
 </div>
