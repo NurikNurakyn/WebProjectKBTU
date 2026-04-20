@@ -43,6 +43,7 @@ export interface Mountain {
   name: string;
   location: string;
   image_url: string;
+  wiki_url: string;
   elevation_m: number;
   difficulty: 'beginner' | 'intermediate' | 'advanced' | 'expert';
   difficulty_label: string;

@@ -5,7 +5,7 @@ from .models import Ascent, Comment, Mountain, UserProfile
 
 @admin.register(Mountain)
 class MountainAdmin(admin.ModelAdmin):
-	list_display = ("id", "name", "location", "elevation_m", "is_featured", "created_by", "image_url")
+	list_display = ("id", "name", "location", "elevation_m", "is_featured", "created_by", "image_url", "wiki_url")
 	search_fields = ("name", "location", "created_by__username")
 	list_filter = ("is_featured",)
 

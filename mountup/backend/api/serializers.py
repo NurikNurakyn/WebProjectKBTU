@@ -42,6 +42,7 @@ class MountainSerializer(serializers.ModelSerializer):
             "name",
             "location",
             "image_url",
+            "wiki_url",
             "elevation_m",
             "difficulty",
             "difficulty_label",

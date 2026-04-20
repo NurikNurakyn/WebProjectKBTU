@@ -23,6 +23,7 @@ class Mountain(models.Model):
 	name = models.CharField(max_length=120)
 	location = models.CharField(max_length=160)
 	image_url = models.URLField(blank=True)
+	wiki_url = models.URLField(blank=True)
 	elevation_m = models.PositiveIntegerField()
 	difficulty = models.CharField(max_length=16, choices=DIFFICULTY_CHOICES)
 	description = models.TextField(blank=True)

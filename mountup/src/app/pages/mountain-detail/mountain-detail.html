@@ -49,7 +49,15 @@
             {{ mountain.description || 'Description can be added from Django admin panel.' }}
           </p>
 
-          <a class="mountain-info-card__back-link" routerLink="/catalog">Back to catalog</a>
+          <div class="mountain-info-card__actions">
+            @if (mountain.wiki_url) {
+              <a class="mountain-info-card__wiki-link" [href]="mountain.wiki_url" target="_blank" rel="noreferrer noopener">
+                Mount's wiki
+              </a>
+            }
+
+            <a class="mountain-info-card__back-link" routerLink="/catalog">Back to catalog</a>
+          </div>
         </article>
       </section>
 
