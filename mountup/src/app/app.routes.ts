@@ -5,6 +5,7 @@ import { Landing } from './pages/landing/landing';
 import { Login } from './pages/login/login';
 import { MountainDetail } from './pages/mountain-detail/mountain-detail';
 import { Profile } from './pages/profile/profile';
+import { Rankings } from './pages/rankings/rankings';
 import { Register } from './pages/register/register';
 
 export const routes: Routes = [
@@ -12,8 +13,8 @@ export const routes: Routes = [
   { path: 'landing', component: Landing },
   { path: 'catalog', component: Catalog },
   { path: 'mountains/:id', component: MountainDetail },
-  { path: 'leaderboard', pathMatch: 'full', redirectTo: 'catalog' },
-  { path: 'rankings', pathMatch: 'full', redirectTo: 'catalog' },
+  { path: 'leaderboard', component: Rankings },
+  { path: 'rankings', pathMatch: 'full', redirectTo: 'leaderboard' },
   { path: 'profile', component: Profile },
   { path: 'about', component: About },
   { path: 'login', component: Login },

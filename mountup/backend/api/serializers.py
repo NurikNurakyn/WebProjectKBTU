@@ -110,7 +110,50 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ["username", "email", "country", "bio", "experience_points", "level", "rank_title", "next_rank"]
+        fields = [
+            "username",
+            "email",
+            "country",
+            "bio",
+            "avatar_url",
+            "experience_points",
+            "level",
+            "rank_title",
+            "next_rank",
+        ]
 
     def get_next_rank(self, obj: UserProfile):
         return obj.next_rank
+
+
+class LeaderboardEntrySerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source="user.username", read_only=True)
+    level = serializers.IntegerField(read_only=True)
+    rank_title = serializers.CharField(read_only=True)
+    ascents_count = serializers.SerializerMethodField()
+    completed_ascents_count = serializers.SerializerMethodField()
+    total_elevation_climbed_m = serializers.SerializerMethodField()
+
+    class Meta:
+        model = UserProfile
+        fields = [
+            "username",
+            "country",
+            "avatar_url",
+            "experience_points",
+            "level",
+            "rank_title",
+            "ascents_count",
+            "completed_ascents_count",
+            "total_elevation_climbed_m",
+        ]
+
+    def get_ascents_count(self, obj: UserProfile) -> int:
+        return obj.user.ascents.count()
+
+    def get_completed_ascents_count(self, obj: UserProfile) -> int:
+        return obj.user.ascents.exclude(status=Ascent.STATUS_PLANNED).count()
+
+    def get_total_elevation_climbed_m(self, obj: UserProfile) -> int:
+        completed_ascents = obj.user.ascents.exclude(status=Ascent.STATUS_PLANNED).select_related("mountain")
+        return sum(ascent.mountain.elevation_m for ascent in completed_ascents)

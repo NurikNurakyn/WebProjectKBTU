@@ -2,6 +2,7 @@ export interface AuthUser {
   id: number;
   username: string;
   email: string;
+  avatar_url?: string;
 }
 
 export interface RegisterRequest {
@@ -151,4 +152,16 @@ export interface Ascent {
 
 export interface MessageResponse {
   message: string;
+}
+
+export interface LeaderboardEntry {
+  username: string;
+  country: string;
+  avatar_url: string;
+  experience_points: number;
+  level: number;
+  rank_title: string;
+  ascents_count: number;
+  completed_ascents_count: number;
+  total_elevation_climbed_m: number;
 }

@@ -24,6 +24,13 @@
       >
       <a
         class="site-header__link"
+        [class.site-header__link--active]="isActive('leaderboard')"
+        routerLink="/leaderboard"
+        (click)="closeMenu()"
+        >LEADERBOARD</a
+      >
+      <a
+        class="site-header__link"
         [class.site-header__link--active]="isActive('about')"
         routerLink="/about"
         (click)="closeMenu()"
@@ -34,11 +41,15 @@
     <div class="site-header__actions">
       @if (isAuthenticated) {
         <button class="site-header__account-btn" type="button" (click)="toggleMenu()">
-          <span
-            class="material-symbols-outlined site-header__account-icon"
-            data-icon="account_circle"
-            >account_circle</span
-          >
+          @if (avatarUrl) {
+            <img class="site-header__account-avatar" [src]="avatarUrl" [alt]="displayName" />
+          } @else {
+            <span
+              class="material-symbols-outlined site-header__account-icon"
+              data-icon="account_circle"
+              >account_circle</span
+            >
+          }
           <span class="site-header__account-name">{{ displayName }}</span>
         </button>
 

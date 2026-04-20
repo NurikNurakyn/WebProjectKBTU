@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./site-header.css'],
 })
 export class SiteHeaderComponent {
-  @Input() activeNav: 'home' | 'guides' | 'about' | '' = '';
+  @Input() activeNav: 'home' | 'guides' | 'leaderboard' | 'about' | '' = '';
 
   isMenuOpen = false;
   currentUser: AuthUser | null = null;
@@ -31,7 +31,11 @@ export class SiteHeaderComponent {
     return this.currentUser?.username || 'Account';
   }
 
-  isActive(tab: 'home' | 'guides' | 'about'): boolean {
+  get avatarUrl(): string {
+    return this.currentUser?.avatar_url || '';
+  }
+
+  isActive(tab: 'home' | 'guides' | 'leaderboard' | 'about'): boolean {
     return this.activeNav === tab;
   }
 

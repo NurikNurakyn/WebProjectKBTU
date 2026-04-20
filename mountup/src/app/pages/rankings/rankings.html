@@ -1,0 +1,74 @@
+<div class="rankings-page">
+  <app-site-header activeNav="leaderboard"></app-site-header>
+
+  <main class="rankings-main">
+    <section class="rankings-hero">
+      <div>
+        <span class="rankings-hero__badge">Global Ranking</span>
+        <h1 class="rankings-hero__title">Leaderboard</h1>
+        <p class="rankings-hero__text">
+          Top climbers are sorted by XP earned from completed ascents.
+        </p>
+      </div>
+      <button
+        class="rankings-hero__reload-btn"
+        type="button"
+        (click)="loadLeaderboard()"
+        [disabled]="isLoadingLeaderboard"
+      >
+        {{ isLoadingLeaderboard ? 'Loading...' : 'Reload leaderboard' }}
+      </button>
+    </section>
+
+    @if (apiErrorMessage) {
+      <section class="rankings-state rankings-state--error">{{ apiErrorMessage }}</section>
+    }
+
+    @if (isLoadingLeaderboard) {
+      <section class="rankings-state">Loading leaderboard from Django...</section>
+    }
+
+    @if (!isLoadingLeaderboard && !apiErrorMessage && leaderboard.length) {
+      <section class="rankings-podium-wrap">
+        <div class="rankings-podium">
+          @for (slot of podiumEntries; track slot.rankPosition) {
+            <article class="rankings-podium__card" [class]="getPodiumClass(slot)">
+              <span class="rankings-podium__place">{{ slot.rankPosition }} place</span>
+              <img
+                class="rankings-podium__avatar"
+                [src]="getAvatarUrl(slot.entry)"
+                [alt]="slot.entry.username"
+              />
+              <h3 class="rankings-podium__name">{{ slot.entry.username }}</h3>
+              <p class="rankings-podium__rank">{{ slot.entry.rank_title }} • Lvl {{ slot.entry.level }}</p>
+              <p class="rankings-podium__xp">{{ slot.entry.experience_points }} XP</p>
+              <div class="rankings-podium__pedestal" [class]="getPedestalClass(slot)"></div>
+            </article>
+          }
+        </div>
+      </section>
+
+      @if (remainingEntries.length) {
+        <section class="rankings-list-wrap">
+          <h2 class="rankings-list__title">Other climbers</h2>
+          <div class="rankings-list">
+            @for (entry of remainingEntries; track entry.username; let i = $index) {
+              <article class="rankings-list__item">
+                <span class="rankings-list__position">{{ getRankPositionForRemaining(i) }}</span>
+                <div class="rankings-list__main">
+                  <p class="rankings-list__name">{{ entry.username }}</p>
+                  <p class="rankings-list__meta">
+                    {{ entry.rank_title }} • Lvl {{ entry.level }} • {{ entry.country || 'N/A' }}
+                  </p>
+                </div>
+                <p class="rankings-list__xp">{{ entry.experience_points }} XP</p>
+              </article>
+            }
+          </div>
+        </section>
+      }
+    } @else if (!isLoadingLeaderboard && !apiErrorMessage) {
+      <section class="rankings-state">Leaderboard is empty for now.</section>
+    }
+  </main>
+</div>

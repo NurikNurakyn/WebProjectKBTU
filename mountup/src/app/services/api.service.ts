@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {
   Ascent,
+  LeaderboardEntry,
   LoginRequest,
   LoginResponse,
   LogoutRequest,
@@ -50,5 +51,9 @@ export class ApiService {
 
   getAscents(): Observable<Ascent[]> {
     return this.http.get<Ascent[]>(`${this.baseUrl}/ascents/`);
+  }
+
+  getLeaderboard(): Observable<LeaderboardEntry[]> {
+    return this.http.get<LeaderboardEntry[]>(`${this.baseUrl}/leaderboard/`);
   }
 }

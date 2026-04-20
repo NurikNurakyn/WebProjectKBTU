@@ -25,5 +25,6 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-	list_display = ("id", "user", "country", "experience_points")
-	search_fields = ("user__username", "country")
+	list_display = ("id", "user", "country", "avatar_url", "experience_points")
+	search_fields = ("user__username", "country", "avatar_url")
+	fields = ("user", "country", "bio", "avatar_url", "experience_points")

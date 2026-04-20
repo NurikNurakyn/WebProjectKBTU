@@ -14,6 +14,7 @@ from .models import Ascent, Comment, Mountain, UserProfile
 from .serializers import (
     AscentSerializer,
     CommentSerializer,
+    LeaderboardEntrySerializer,
     LoginSerializer,
     LogoutSerializer,
     MountainSerializer,
@@ -311,6 +312,7 @@ def login_view(request):
     if user is None:
         return Response({"error": "Invalid credentials."}, status=status.HTTP_400_BAD_REQUEST)
 
+    profile, _ = UserProfile.objects.get_or_create(user=user)
     refresh = RefreshToken.for_user(user)
     return Response(
         {
@@ -320,6 +322,7 @@ def login_view(request):
                 "id": user.id,
                 "username": user.username,
                 "email": user.email,
+                "avatar_url": profile.avatar_url,
             },
         }
     )
@@ -387,3 +390,11 @@ def profile_view(request):
         "over_or_equal_8000": eight_thousanders_count,
     }
     return Response(payload)
+
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def leaderboard_view(request):
+    profiles = UserProfile.objects.select_related("user").order_by("-experience_points", "user__username")
+    serializer = LeaderboardEntrySerializer(profiles, many=True)
+    return Response(serializer.data)

@@ -48,10 +48,10 @@ class Mountain(models.Model):
 class UserProfile(models.Model):
 	RANK_RULES = (
 		(0, "Novice"),
-		(2000, "Amateur"),
-		(4500, "Pro Climber"),
-		(7000, "Master Alpinist"),
-		(9500, "Sky Sovereign"),
+		(5000, "Amateur"),
+		(10000, "Pro Climber"),
+		(20000, "Master Alpinist"),
+		(50000, "Sky Sovereign"),
 	)
 
 	user = models.OneToOneField(
@@ -61,6 +61,7 @@ class UserProfile(models.Model):
 	)
 	country = models.CharField(max_length=80, blank=True)
 	bio = models.TextField(blank=True)
+	avatar_url = models.URLField(blank=True)
 	experience_points = models.PositiveIntegerField(default=0)
 
 	@property
